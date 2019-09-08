@@ -1,0 +1,14 @@
+{
+    "extends": ["tslint:recommended", "tslint-react", "tslint-react-hooks", "tslint-config-prettier"],
+    "linterOptions": {
+        "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
+    },
+    "rules": {
+        "interface-over-type-literal": false,
+        "no-console": [false, "log", "error", "debug", "info", "time", "timeEnd", "trace"],
+        "object-literal-sort-keys": false,
+        "ordered-imports": false,
+        "interface-name": false,
+        "react-hooks-nesting": "error"
+    }
+}
