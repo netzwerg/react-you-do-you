@@ -30,6 +30,9 @@
         "typescript": "3.6.2",
         "redux-devtools-extension": "^2.13.8"
     },
+    "resolutions": {
+        "eslint-utils": "^1.4.2"
+    },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
