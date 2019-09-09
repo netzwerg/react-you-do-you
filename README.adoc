@@ -1,4 +1,5 @@
 An example of how I use React + Redux + Material-UI + TypeScript.
+Or: The code I wish existed when I got started.
 
 This is how I do it – *you do you* 💖
 
