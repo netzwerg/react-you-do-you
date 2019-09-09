@@ -1,5 +1,7 @@
-import { Theme } from '@material-ui/core'
+import { ChatState } from '../chat'
+import { ThemeState } from '../theme'
 
 export interface RootState {
-    readonly theme: Theme
+    readonly theme: ThemeState
+    readonly chat: ChatState
 }

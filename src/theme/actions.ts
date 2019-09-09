@@ -1,4 +1,6 @@
-import { TOGGLE_THEME } from './actionTypes'
+export const TOGGLE_THEME = 'theme/TOGGLE_THEME'
+
+export type ThemeAction = ToggleThemeAction
 
 export interface ToggleThemeAction {
     readonly type: typeof TOGGLE_THEME
@@ -9,5 +11,3 @@ export const toggleTheme = (): ToggleThemeAction => {
         type: TOGGLE_THEME
     }
 }
-
-export type ThemeAction = ToggleThemeAction
