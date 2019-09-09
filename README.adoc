@@ -53,9 +53,18 @@ However, this is the minimum I *always* test:
 * Root reducer: Making sure each action is handled correctly (~80% of my logic)
 * Error-free rendering of each component
 
-== Available Scripts
+== Usage
+
+```
+git clone https://github.com/netzwerg/react-you-do-you.git
+cd react-you-do-you
+yarn install
+yarn start
+```
 
 _Feel free to use `npm` rather than `yarn` – I don't have a preference_
+
+== Available Scripts
 
 === `yarn start`
 
