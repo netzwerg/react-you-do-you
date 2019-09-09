@@ -1,11 +1,11 @@
 import React from 'react'
 import { CssBaseline, Theme } from '@material-ui/core'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import Typography from '@material-ui/core/Typography'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { ThemeSwitch } from '../../theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import { ChatHistory } from '../../chat'
 
 const useStyles = makeStyles({
     toolbar: {
@@ -17,7 +17,9 @@ const useStyles = makeStyles({
         display: 'grid',
         height: '100vh',
         width: '100vw',
-        padding: 100
+        paddingTop: 100,
+        paddingLeft: 300,
+        paddingRight: 300
     }
 })
 
@@ -37,7 +39,7 @@ export const App = ({ theme }: Props) => {
                     </Toolbar>
                 </AppBar>
                 <div className={classes.main}>
-                    <Typography>Yay, hello there :-)</Typography>
+                    <ChatHistory />
                 </div>
             </ThemeProvider>
         </div>
