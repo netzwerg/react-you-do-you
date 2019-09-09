@@ -20,8 +20,8 @@ const useStyles = makeStyles({
         gridTemplateRows: 'auto 1fr',
         gridRowGap: 8,
         paddingTop: 100,
-        paddingLeft: 300,
-        paddingRight: 300
+        paddingLeft: '20vw',
+        paddingRight: '20vw'
     }
 })
 
