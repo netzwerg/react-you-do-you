@@ -1,22 +1,17 @@
-import { connect } from 'react-redux'
-import { ThemeSwitch as ThemeSwitchComp } from '../components/ThemeSwitch'
-import { Theme } from '@material-ui/core'
+import { connect, Omit } from 'react-redux'
+import { Props, ThemeSwitch as ThemeSwitchComp } from '../components/ThemeSwitch'
 import { ThemeAction } from '../actions'
 import { toggleTheme } from '../index'
 import { Dispatch } from 'redux'
 import { RootState } from '../../store'
 
-interface FromStateProps {
-    readonly theme: Theme
-}
-
-interface FromDispatchProps {
-    readonly onToggleTheme: () => void
-}
+type FromStateProps = Omit<Props, 'onToggleTheme'>
 
 const mapStateToProps = (state: RootState): FromStateProps => {
     return { theme: state.theme }
 }
+
+type FromDispatchProps = Omit<Props, 'theme'>
 
 const mapDispatchToProps = (dispatch: Dispatch<ThemeAction>): FromDispatchProps => {
     return {

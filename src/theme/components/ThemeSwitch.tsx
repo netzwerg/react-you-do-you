@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     }
 })
 
-interface Props {
+export interface Props {
     readonly theme: Theme
     readonly onToggleTheme: () => void
 }
