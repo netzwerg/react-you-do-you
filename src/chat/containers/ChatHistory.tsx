@@ -4,7 +4,7 @@ import { RootState } from '../../store'
 
 const mapStateToProps = (state: RootState): Props => {
     return {
-        messages: state.chat.messages
+        messages: state.chat.messages.sortBy(m => m.timestamp).reverse()
     }
 }
 

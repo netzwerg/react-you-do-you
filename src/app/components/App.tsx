@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { ThemeSwitch } from '../../theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import { ChatHistory } from '../../chat'
+import { ChatHistory, ChatInput } from '../../chat'
 
 const useStyles = makeStyles({
     toolbar: {
@@ -17,6 +17,8 @@ const useStyles = makeStyles({
         display: 'grid',
         height: '100vh',
         width: '100vw',
+        gridTemplateRows: 'auto 1fr',
+        gridRowGap: 8,
         paddingTop: 100,
         paddingLeft: 300,
         paddingRight: 300
@@ -39,6 +41,7 @@ export const App = ({ theme }: Props) => {
                     </Toolbar>
                 </AppBar>
                 <div className={classes.main}>
+                    <ChatInput />
                     <ChatHistory />
                 </div>
             </ThemeProvider>

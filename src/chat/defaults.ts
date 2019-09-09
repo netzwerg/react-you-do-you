@@ -5,11 +5,11 @@ export const defaultChatState: ChatState = {
     messages: ImmutableList([
         {
             timestamp: 1568011059155,
-            text: 'Hey there!'
+            text: 'This may turn into a chat, but is just a list of one-line messages for now'
         },
         {
             timestamp: 1568011059165,
-            text: 'This may turn into a chat, but is just a list of messages for now'
+            text: 'Hey there!'
         }
     ])
 }

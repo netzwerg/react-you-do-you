@@ -6,13 +6,13 @@ import { toggleTheme } from '../index'
 import { Dispatch } from 'redux'
 import { RootState } from '../../store'
 
-type FromStateProps = Readonly<{
-    theme: Theme
-}>
+interface FromStateProps {
+    readonly theme: Theme
+}
 
-type FromDispatchProps = Readonly<{
-    onToggleTheme: () => void
-}>
+interface FromDispatchProps {
+    readonly onToggleTheme: () => void
+}
 
 const mapStateToProps = (state: RootState): FromStateProps => {
     return { theme: state.theme }
