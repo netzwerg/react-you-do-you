@@ -1,0 +1,76 @@
+An example of how I use React + Redux + Material-UI + TypeScript.
+
+This is how I do it – *you do you* 💖
+
+== Setup & Tooling
+** https://facebook.github.io/create-react-app[create-react-app] for project setup
+** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
+** https://palantir.github.io/tslint/[TSLint] for static code analysis
+
+== Structure
+Organize *by feature*:
+
+* Each feature gets its own folder:
+** Defines its own model/actions/reducer
+** Defines its own components
+** Exports selectively through its `index.ts` file
+
+When using the feature:
+
+* Only ever import what is officially exported:
+** ✅ `import { Foo } from './feature-x'`
+** 🚫 `import { SecretInternalComponent } from './feature-x/components/SecretInternalComponent'`)
+* Avoid circular dependencies – sooner or later, a `shared` folder will be needed ;-)
+
+== State Management
+
+* Keep state in a *fully typed, immutable* model:
+** Use interfaces or type aliases rather than classes
+** Use TypeScript's `readonly` keyword
+** Use https://github.com/immutable-js/immutable-js[immutable] collections
+* Use https://redux.js.org/[Redux] to store and manage state:
+** Define a `RootState` by composing the various feature-specific models
+** Define a `RootReducer` by composing the feature-specific reducers, each being responsible for the feature-specific state slice.
+** Write container components to connect presentation components to the Redux store. *Why?* Presentation components are more re-usable if they don't know how state is shaped nor how it's managed.
+
+== User Interface
+
+Use https://material-ui.com/[Material-UI], a React component library based on https://en.m.wikipedia.org/wiki/Material_Design[Material Design]:
+
+* Huge selection of components, fully customizable
+* Theme support (e.g. light vs dark)
+* CSS in JS (or in TS, actually): Reusable, component-scoped styles
+
+My CSS skills are embarrassing, but https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout[CSS Grid Layout] gives me super powers.
+I use it for everything.
+
+== Testing
+
+I am mostly developing prototypes these days, so I am not an expert when it comes to testing.
+However, this is the minimum I *always* test:
+
+* Root reducer: Making sure each action is handled correctly (~80% of my logic)
+* Error-free rendering of each component
+
+== Available Scripts
+
+_Feel free to use `npm` rather than `yarn` – I don't have a preference_
+
+=== `yarn start`
+
+Compiles and runs the app in development mode.
+
+Open http://localhost:3000 to view it in the browser.
+
+The page will reload if you make edits.
+You will also see any compile or lint errors in the console.
+
+=== `yarn test`
+
+Launches the test runner in interactive watch mode.
+
+=== `yarn run build`
+
+Builds the app for production to the `build` folder.
+
+&copy; Rahel Lüthy – 2019
