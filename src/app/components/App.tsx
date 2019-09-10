@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { ThemeSwitch } from '../../theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import { ChatHistory, ChatInput } from '../../chat'
+import { ChatErrors, ChatHistory, ChatInput } from '../../chat'
 
 const useStyles = makeStyles({
     toolbar: {
@@ -44,6 +44,7 @@ export const App = ({ theme }: Props) => {
                     <ChatInput />
                     <ChatHistory />
                 </div>
+                <ChatErrors />
             </ThemeProvider>
         </div>
     )

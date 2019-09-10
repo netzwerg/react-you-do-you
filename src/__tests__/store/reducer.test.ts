@@ -7,7 +7,8 @@ import { ADD_MESSAGE, addMessage, AddMessageAction, DELETE_MESSAGE, deleteMessag
 const initialState: RootState = {
     theme: lightTheme,
     chat: {
-        messages: ImmutableList()
+        messages: ImmutableList(),
+        errors: ImmutableList()
     }
 }
 

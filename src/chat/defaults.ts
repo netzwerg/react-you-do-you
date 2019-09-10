@@ -11,5 +11,6 @@ export const defaultChatState: ChatState = {
             timestamp: 1568011059165,
             text: 'Hey there!'
         }
-    ])
+    ]),
+    errors: ImmutableList()
 }
