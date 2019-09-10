@@ -1,3 +1,5 @@
+= react-you-do-you image:https://travis-ci.com/netzwerg/react-you-do-you.svg?branch=master["Build Status", link="https://travis-ci.com/netzwerg/react-you-do-you"]
+
 An example of how I use React + Redux + Material-UI + TypeScript.
 Or: The code I wish existed when I got started.
 
