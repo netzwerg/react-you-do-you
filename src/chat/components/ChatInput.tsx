@@ -53,18 +53,18 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Pr
                 onKeyPress={onKeyPress}
             />
             <div className={classes.buttons}>
-                <Button color="primary" variant="outlined" onClick={onFetchAsyncMessage}>
-                    Async Fetch
-                    <Tooltip title={'Fetch Async Message'}>
+                <Tooltip title={'Fetch Async Message'}>
+                    <Button color="primary" variant="outlined" onClick={onFetchAsyncMessage}>
+                        Async
                         <CloudDownloadIcon className={classes.icon} />
-                    </Tooltip>
-                </Button>
-                <Button color="secondary" variant="outlined" onClick={onDemoError}>
-                    Demo Error
-                    <Tooltip title={'Demo Error'}>
+                    </Button>
+                </Tooltip>
+                <Tooltip title={'Demo Error Handling'}>
+                    <Button color="secondary" variant="outlined" onClick={onDemoError}>
+                        Error
                         <ErrorIcon className={classes.icon} />
-                    </Tooltip>
-                </Button>
+                    </Button>
+                </Tooltip>
             </div>
         </div>
     )
