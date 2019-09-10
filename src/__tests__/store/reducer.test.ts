@@ -2,7 +2,19 @@ import { darkTheme, lightTheme, TOGGLE_THEME, toggleTheme, ToggleThemeAction } f
 import { rootReducer } from '../../store/reducer'
 import { RootState } from '../../store'
 import { List as ImmutableList } from 'immutable'
-import { ADD_MESSAGE, addMessage, AddMessageAction, DELETE_MESSAGE, deleteMessage } from '../../chat'
+import {
+    ADD_CHAT_ERROR,
+    ADD_MESSAGE,
+    addChatError,
+    AddChatErrorAction,
+    addMessage,
+    AddMessageAction,
+    DELETE_MESSAGE,
+    deleteMessage,
+    DISMISS_CHAT_ERRORS,
+    dismissChatErrors,
+    DismissChatErrorsAction
+} from '../../chat'
 
 const initialState: RootState = {
     theme: lightTheme,
@@ -39,5 +51,15 @@ describe('root reducer', () => {
         state = rootReducer(state, deleteMessage(timestamp))
         expect(state.chat.messages.size).toEqual(2)
         expect(state.chat.messages.find(m => m.text === 'two')).toBeFalsy()
+    })
+    it(`should handle ${ADD_CHAT_ERROR} and ${DISMISS_CHAT_ERRORS} actions`, () => {
+        const addAction: AddChatErrorAction = addChatError('A test error message')
+        const dismissAction: DismissChatErrorsAction = dismissChatErrors()
+        let state = rootReducer(initialState, addAction)
+        expect(state.chat.errors.size).toEqual(1)
+        state = rootReducer(state, addAction)
+        expect(state.chat.errors.size).toEqual(2)
+        state = rootReducer(state, dismissAction)
+        expect(state.chat.errors.size).toEqual(0)
     })
 })
