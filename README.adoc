@@ -34,6 +34,7 @@ When using the feature:
 ** Define a `RootState` by composing the various feature-specific models
 ** Define a `RootReducer` by composing the feature-specific reducers, each being responsible for the feature-specific state slice.
 ** Write container components to connect presentation components to the Redux store. *Why?* Presentation components are more re-usable if they don't know how state is shaped nor how it's managed.
+** Use https://github.com/reduxjs/redux-thunk[redux-thunk] for async actions
 
 == User Interface
 
