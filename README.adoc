@@ -3,6 +3,8 @@ Or: The code I wish existed when I got started.
 
 This is how I do it – *you do you* 💖
 
+-> Play with the code & app on https://codesandbox.io/s/github/netzwerg/react-you-do-you[CodeSandbox] ✨
+
 == Setup & Tooling
 ** https://facebook.github.io/create-react-app[create-react-app] for project setup
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
