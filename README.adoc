@@ -1,9 +1,11 @@
+= react-you-do-you image:https://travis-ci.com/netzwerg/react-you-do-you.svg?branch=master["Build Status", link="https://travis-ci.com/netzwerg/react-you-do-you"]
+
 An example of how I use React + Redux + Material-UI + TypeScript.
 Or: The code I wish existed when I got started.
 
 This is how I do it – *you do you* 💖
 
--> Play with the code & app on https://codesandbox.io/s/github/netzwerg/react-you-do-you[CodeSandbox] ✨
+image:https://codesandbox.io/static/img/play-codesandbox.svg["Edit react-you-do-you", link="https://codesandbox.io/s/github/netzwerg/react-you-do-you/tree/master/?fontsize=14"]
 
 == Setup & Tooling
 ** https://facebook.github.io/create-react-app[create-react-app] for project setup
