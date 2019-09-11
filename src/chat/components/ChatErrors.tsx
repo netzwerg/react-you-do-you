@@ -41,7 +41,7 @@ export const ChatErrors = ({ errors, onDismissErrors }: Props) => {
                         <CloseIcon />
                     </IconButton>
                 ]}
-            ></SnackbarContent>
+            />
         </Snackbar>
     )
 }

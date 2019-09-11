@@ -35,7 +35,7 @@ describe('root reducer', () => {
     it(`should handle ${ADD_MESSAGE} action`, () => {
         const text = 'hey there'
         const action: AddMessageAction = addMessage(text)
-        let state = rootReducer(initialState, action)
+        const state = rootReducer(initialState, action)
         expect(state.chat.messages.size).toEqual(1)
         expect(state.chat.messages.get(0)!.text).toEqual(text)
     })
