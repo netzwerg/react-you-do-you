@@ -24,23 +24,30 @@
         "lint-staged": "9.2.5",
         "prettier": "1.18.2",
         "@testing-library/react": "9.1.4",
-        "tslint": "5.19.0",
-        "tslint-config-prettier": "1.18.0",
-        "tslint-react": "4.0.0",
-        "tslint-react-hooks": "2.2.1",
         "react-scripts": "3.1.1",
         "typescript": "3.6.2",
         "yarpm": "^0.2.1"
     },
     "resolutions": {
-        "eslint-utils": "^1.4.2"
+        "eslint-utils": "^1.4.2",
+        "@typescript-eslint/parser": "^1.11.0",
+        "@typescript-eslint/eslint-plugin": "^1.11.0",
+        "@typescript-eslint/typescript-estree": "^1.11.0"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "tslint --project ."
+        "lint": "eslint './src/**/*.{ts,tsx}'",
+        "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
+    },
+    "eslintConfig": {
+        "extends": "react-app",
+        "rules": {
+            "semi": "off",
+            "@typescript-eslint/semi": ["error", "never"]
+        }
     },
     "browserslist": {
         "production": [

@@ -8,9 +8,13 @@ This is how I do it – *you do you* 💖
 image:https://codesandbox.io/static/img/play-codesandbox.svg["Edit react-you-do-you", link="https://codesandbox.io/s/github/netzwerg/react-you-do-you/tree/master/?fontsize=14"]
 
 == Setup & Tooling
-** https://facebook.github.io/create-react-app[create-react-app] for project setup
+** https://facebook.github.io/create-react-app[create-react-app] for project setup:
+*** Compilation, linting, etc.
+*** Development mode with auto-reloading
+*** Test watcher
+*** Optimized production build
+*** see <<scripts, Available Scripts>>
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
-** https://palantir.github.io/tslint/[TSLint] for static code analysis
 ** http://extension.remotedev.io/[Redux DevTools] for state management debugging
 
 == Structure
@@ -68,8 +72,9 @@ yarn install
 yarn start
 ```
 
-_Feel free to use `npm` rather than `yarn` – I don't have a preference_
+_Feel free to use `npm` rather than `yarn` – I have a slight preference for `yarn`, mainly because of https://yarnpkg.com/lang/en/docs/selective-version-resolutions/[resolutions] support_
 
+[[scripts]]
 == Available Scripts
 
 === `yarn start`
