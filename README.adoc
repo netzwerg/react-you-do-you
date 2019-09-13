@@ -94,4 +94,12 @@ Launches the test runner in interactive watch mode.
 
 Builds the app for production to the `build` folder.
 
+=== `yarn run lint`
+
+Runs ESLint (with TypeScript support) on all `*.ts` or `*.tsx` files in the `src` directory.
+
+=== `yarn run lint:fix`
+
+Runs ESLint (with TypeScript support) on all `*.ts` or `*.tsx` files in the `src` directory, automatically *fixing* problems.
+
 &copy; Rahel Lüthy – 2019
