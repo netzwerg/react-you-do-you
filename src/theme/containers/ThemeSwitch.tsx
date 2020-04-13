@@ -1,22 +1,13 @@
-import { connect, Omit } from 'react-redux'
-import { Props, ThemeSwitch as ThemeSwitchComp } from '../components/ThemeSwitch'
+import * as React from 'react'
+import { ThemeSwitch as ThemeSwitchComp } from '../components/ThemeSwitch'
 import { ThemeAction } from '../actions'
 import { toggleTheme } from '../index'
-import { Dispatch } from 'redux'
-import { RootState } from '../../store'
+import { useTypedDispatch, useTypedState } from '../../store'
+import { Theme } from '@material-ui/core'
 
-type FromStateProps = Omit<Props, 'onToggleTheme'>
-
-const mapStateToProps = (state: RootState): FromStateProps => {
-  return { theme: state.theme }
+export const ThemeSwitch = () => {
+  const theme = useTypedState<Theme>(s => s.theme)
+  const dispatch = useTypedDispatch<ThemeAction>()
+  const onToggleTheme = () => dispatch(toggleTheme())
+  return <ThemeSwitchComp theme={theme} onToggleTheme={onToggleTheme} />
 }
-
-type FromDispatchProps = Omit<Props, 'theme'>
-
-const mapDispatchToProps = (dispatch: Dispatch<ThemeAction>): FromDispatchProps => {
-  return {
-    onToggleTheme: () => dispatch(toggleTheme())
-  }
-}
-
-export const ThemeSwitch = connect(mapStateToProps, mapDispatchToProps)(ThemeSwitchComp)

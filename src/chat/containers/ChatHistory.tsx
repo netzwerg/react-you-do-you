@@ -1,23 +1,15 @@
-import { ChatHistory as ChatHistoryComponent, Props } from '../components/ChatHistory'
-import { connect } from 'react-redux'
-import { RootState } from '../../store'
-import { Dispatch } from 'redux'
-import { ChatAction, deleteMessage } from '../actions'
+import { ChatHistory as ChatHistoryComponent } from '../components/ChatHistory'
+import * as React from 'react'
+import { useTypedDispatch, useTypedState } from '../../store'
+import { deleteMessage, DeleteMessageAction } from '../actions'
+import { List as ImmutableList } from 'immutable'
+import { Message } from '../model'
 
-type FromStateProps = Omit<Props, 'onDeleteMessage'>
+export const ChatHistory = () => {
+  const messages = useTypedState<ImmutableList<Message>>(s => s.chat.messages.sortBy(m => m.timestamp).reverse())
 
-const mapStateToProps = (state: RootState): FromStateProps => {
-  return {
-    messages: state.chat.messages.sortBy(m => m.timestamp).reverse()
-  }
+  const dispatch = useTypedDispatch<DeleteMessageAction>()
+  const onDeleteMessage = (timestamp: number) => dispatch(deleteMessage(timestamp))
+
+  return <ChatHistoryComponent messages={messages} onDeleteMessage={onDeleteMessage} />
 }
-
-type FromDispatchProps = Omit<Props, 'messages'>
-
-const mapDispatchToProps = (dispatch: Dispatch<ChatAction>): FromDispatchProps => {
-  return {
-    onDeleteMessage: timestamp => dispatch(deleteMessage(timestamp))
-  }
-}
-
-export const ChatHistory = connect(mapStateToProps, mapDispatchToProps)(ChatHistoryComponent)

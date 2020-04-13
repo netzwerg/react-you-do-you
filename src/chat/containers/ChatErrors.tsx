@@ -1,23 +1,15 @@
-import { ChatErrors as ChatErrorsComponent, Props } from '../components/ChatErrors'
-import { connect } from 'react-redux'
-import { RootState } from '../../store'
-import { Dispatch } from 'redux'
-import { ChatAction, dismissChatErrors } from '../actions'
+import * as React from 'react'
+import { ChatErrors as ChatErrorsComponent } from '../components/ChatErrors'
+import { useTypedDispatch, useTypedState } from '../../store'
+import { dismissChatErrors, DismissChatErrorsAction } from '../actions'
+import { List as ImmutableList } from 'immutable'
+import { ChatError } from '../model'
 
-type FromStateProps = Omit<Props, 'onDismissErrors'>
+export const ChatErrors = () => {
+  const errors = useTypedState<ImmutableList<ChatError>>(s => s.chat.errors)
 
-const mapStateToProps = (state: RootState): FromStateProps => {
-  return {
-    errors: state.chat.errors
-  }
+  const dispatch = useTypedDispatch<DismissChatErrorsAction>()
+  const onDismissErrors = () => dispatch(dismissChatErrors())
+
+  return <ChatErrorsComponent errors={errors} onDismissErrors={onDismissErrors} />
 }
-
-type FromDispatchProps = Omit<Props, 'errors'>
-
-const mapDispatchToProps = (dispatch: Dispatch<ChatAction>): FromDispatchProps => {
-  return {
-    onDismissErrors: () => dispatch(dismissChatErrors())
-  }
-}
-
-export const ChatErrors = connect(mapStateToProps, mapDispatchToProps)(ChatErrorsComponent)

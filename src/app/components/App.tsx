@@ -1,5 +1,4 @@
 import React from 'react'
-import { CssBaseline, MuiThemeProvider as ThemeProvider, Theme } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { ThemeSwitch } from '../../theme'
@@ -24,27 +23,20 @@ const useStyles = makeStyles({
   }
 })
 
-export interface Props {
-  readonly theme: Theme
-}
-
-export const App = ({ theme }: Props) => {
+export const App = () => {
   const classes = useStyles()
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppBar className={classes.toolbar}>
-          <Toolbar>
-            <ThemeSwitch />
-          </Toolbar>
-        </AppBar>
-        <div className={classes.main}>
-          <ChatInput />
-          <ChatHistory />
-        </div>
-        <ChatErrors />
-      </ThemeProvider>
+      <AppBar className={classes.toolbar}>
+        <Toolbar>
+          <ThemeSwitch />
+        </Toolbar>
+      </AppBar>
+      <div className={classes.main}>
+        <ChatInput />
+        <ChatHistory />
+      </div>
+      <ChatErrors />
     </div>
   )
 }

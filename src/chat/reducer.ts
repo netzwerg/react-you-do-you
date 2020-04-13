@@ -1,9 +1,8 @@
 import { ChatState } from './model'
-import { defaultChatState } from './defaults'
 import { ADD_CHAT_ERROR, ADD_MESSAGE, ChatAction, DELETE_MESSAGE, DISMISS_CHAT_ERRORS } from './actions'
 import { List as ImmutableList } from 'immutable'
 
-export const reducer = (state: ChatState = defaultChatState, action: ChatAction): ChatState => {
+export const chatReducer = (state: ChatState, action: ChatAction): ChatState => {
   switch (action.type) {
     case ADD_MESSAGE:
       return {

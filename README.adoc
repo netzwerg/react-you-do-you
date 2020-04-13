@@ -22,7 +22,7 @@ Organize *by feature*:
 
 * Each feature gets its own folder:
 ** Defines its own model/actions/reducer
-** Defines its own components
+** Defines its own components (with clear separation between presentation (inside 'components' folder) and glue-code/logic (inside 'containers' folder)
 ** Exports selectively through its `index.ts` file
 
 When using the feature:

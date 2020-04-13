@@ -1,4 +1,4 @@
-import createMuiTheme, { Theme } from '@material-ui/core/styles/createMuiTheme'
+import { createMuiTheme, Theme } from '@material-ui/core'
 
 export type ThemeState = Theme
 
