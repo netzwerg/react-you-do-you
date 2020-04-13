@@ -6,28 +6,28 @@ import { darkTheme } from '../model'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles({
-    root: {
-        display: 'grid',
-        gridTemplateColumns: 'auto 1fr auto',
-        alignItems: 'center'
-    },
-    icon: {
-        margin: 4
-    }
+  root: {
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr auto',
+    alignItems: 'center'
+  },
+  icon: {
+    margin: 4
+  }
 })
 
 export interface Props {
-    readonly theme: Theme
-    readonly onToggleTheme: () => void
+  readonly theme: Theme
+  readonly onToggleTheme: () => void
 }
 
 export const ThemeSwitch = ({ theme, onToggleTheme }: Props) => {
-    const classes = useStyles(theme)
-    return (
-        <div className={classes.root}>
-            <LightThemeIcon className={classes.icon} />
-            <Switch checked={theme === darkTheme} onChange={onToggleTheme} color={'default'} />
-            <DarkThemeIcon className={classes.icon} />
-        </div>
-    )
+  const classes = useStyles(theme)
+  return (
+    <div className={classes.root}>
+      <LightThemeIcon className={classes.icon} />
+      <Switch checked={theme === darkTheme} onChange={onToggleTheme} color={'default'} />
+      <DarkThemeIcon className={classes.icon} />
+    </div>
+  )
 }

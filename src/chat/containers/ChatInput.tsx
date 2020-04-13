@@ -10,14 +10,11 @@ const demoUrl = 'message.txt' // resides in `public` folder
 const errorMessage = 'A demo error'
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<ChatState, {}, ChatAction>): Props => {
-    return {
-        onAddMessage: text => dispatch(addMessage(text)),
-        onFetchAsyncMessage: () => dispatch(fetchMessage(demoUrl)),
-        onDemoError: () => dispatch(addChatError(errorMessage))
-    }
+  return {
+    onAddMessage: text => dispatch(addMessage(text)),
+    onFetchAsyncMessage: () => dispatch(fetchMessage(demoUrl)),
+    onDemoError: () => dispatch(addChatError(errorMessage))
+  }
 }
 
-export const ChatInput = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ChatInputComponent)
+export const ChatInput = connect(mapStateToProps, mapDispatchToProps)(ChatInputComponent)

@@ -7,6 +7,6 @@ import { RootState } from './model'
 type RootReducer = (state: RootState | undefined, action: RootAction) => RootState
 
 export const rootReducer: RootReducer = combineReducers({
-    theme: themeReducer,
-    chat: chatReducer
+  theme: themeReducer,
+  chat: chatReducer
 })

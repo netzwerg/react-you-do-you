@@ -7,20 +7,17 @@ import { ChatAction, deleteMessage } from '../actions'
 type FromStateProps = Omit<Props, 'onDeleteMessage'>
 
 const mapStateToProps = (state: RootState): FromStateProps => {
-    return {
-        messages: state.chat.messages.sortBy(m => m.timestamp).reverse()
-    }
+  return {
+    messages: state.chat.messages.sortBy(m => m.timestamp).reverse()
+  }
 }
 
 type FromDispatchProps = Omit<Props, 'messages'>
 
 const mapDispatchToProps = (dispatch: Dispatch<ChatAction>): FromDispatchProps => {
-    return {
-        onDeleteMessage: timestamp => dispatch(deleteMessage(timestamp))
-    }
+  return {
+    onDeleteMessage: timestamp => dispatch(deleteMessage(timestamp))
+  }
 }
 
-export const ChatHistory = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ChatHistoryComponent)
+export const ChatHistory = connect(mapStateToProps, mapDispatchToProps)(ChatHistoryComponent)

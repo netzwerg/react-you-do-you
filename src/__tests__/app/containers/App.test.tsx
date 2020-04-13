@@ -5,15 +5,15 @@ import { configureStore } from '../../../store'
 import { Provider } from 'react-redux'
 
 it('renders without crashing', () => {
-    const store = configureStore()
+  const store = configureStore()
 
-    const Root = () => (
-        <Provider store={store}>
-            <App />
-        </Provider>
-    )
+  const Root = () => (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
 
-    const div = document.createElement('div')
-    ReactDOM.render(<Root />, div)
-    ReactDOM.unmountComponentAtNode(div)
+  const div = document.createElement('div')
+  ReactDOM.render(<Root />, div)
+  ReactDOM.unmountComponentAtNode(div)
 })

@@ -4,9 +4,9 @@ import { darkTheme, lightTheme } from './model'
 import { defaultTheme } from './defaults'
 
 export const reducer = (state: Theme = defaultTheme, action: ThemeAction): Theme => {
-    if (action.type === TOGGLE_THEME) {
-        return state.palette.type === 'light' ? darkTheme : lightTheme
-    } else {
-        return state
-    }
+  if (action.type === TOGGLE_THEME) {
+    return state.palette.type === 'light' ? darkTheme : lightTheme
+  } else {
+    return state
+  }
 }

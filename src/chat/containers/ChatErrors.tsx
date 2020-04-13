@@ -7,20 +7,17 @@ import { ChatAction, dismissChatErrors } from '../actions'
 type FromStateProps = Omit<Props, 'onDismissErrors'>
 
 const mapStateToProps = (state: RootState): FromStateProps => {
-    return {
-        errors: state.chat.errors
-    }
+  return {
+    errors: state.chat.errors
+  }
 }
 
 type FromDispatchProps = Omit<Props, 'errors'>
 
 const mapDispatchToProps = (dispatch: Dispatch<ChatAction>): FromDispatchProps => {
-    return {
-        onDismissErrors: () => dispatch(dismissChatErrors())
-    }
+  return {
+    onDismissErrors: () => dispatch(dismissChatErrors())
+  }
 }
 
-export const ChatErrors = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ChatErrorsComponent)
+export const ChatErrors = connect(mapStateToProps, mapDispatchToProps)(ChatErrorsComponent)

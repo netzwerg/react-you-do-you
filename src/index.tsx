@@ -7,9 +7,9 @@ import { Provider } from 'react-redux'
 const store = configureStore()
 
 const Root = () => (
-    <Provider store={store}>
-        <App />
-    </Provider>
+  <Provider store={store}>
+    <App />
+  </Provider>
 )
 
 ReactDOM.render(<Root />, document.getElementById('root'))

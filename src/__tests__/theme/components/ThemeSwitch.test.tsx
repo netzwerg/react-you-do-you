@@ -5,7 +5,7 @@ import { lightTheme } from '../../../theme'
 import { noOp } from '../../utils'
 
 it('renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<ThemeSwitch theme={lightTheme} onToggleTheme={noOp} />, div)
-    ReactDOM.unmountComponentAtNode(div)
+  const div = document.createElement('div')
+  ReactDOM.render(<ThemeSwitch theme={lightTheme} onToggleTheme={noOp} />, div)
+  ReactDOM.unmountComponentAtNode(div)
 })

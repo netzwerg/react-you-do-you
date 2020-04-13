@@ -8,18 +8,15 @@ import { RootState } from '../../store'
 type FromStateProps = Omit<Props, 'onToggleTheme'>
 
 const mapStateToProps = (state: RootState): FromStateProps => {
-    return { theme: state.theme }
+  return { theme: state.theme }
 }
 
 type FromDispatchProps = Omit<Props, 'theme'>
 
 const mapDispatchToProps = (dispatch: Dispatch<ThemeAction>): FromDispatchProps => {
-    return {
-        onToggleTheme: () => dispatch(toggleTheme())
-    }
+  return {
+    onToggleTheme: () => dispatch(toggleTheme())
+  }
 }
 
-export const ThemeSwitch = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ThemeSwitchComp)
+export const ThemeSwitch = connect(mapStateToProps, mapDispatchToProps)(ThemeSwitchComp)

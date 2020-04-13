@@ -6,5 +6,5 @@ import { RootAction } from './actions'
 import thunk from 'redux-thunk'
 
 export const configureStore = (): Store<RootState, RootAction> => {
-    return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+  return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 }
