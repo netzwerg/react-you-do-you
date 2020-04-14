@@ -1,6 +1,7 @@
 = react-you-do-you image:https://travis-ci.com/netzwerg/react-you-do-you.svg?branch=master["Build Status", link="https://travis-ci.com/netzwerg/react-you-do-you"]
 
 An example of how I use React + Redux + Material-UI + TypeScript.
+
 Or: The code I wish existed when I got started.
 
 This is how I do it – *you do you* 💖
@@ -43,6 +44,10 @@ When using the feature:
 ** Define a `RootReducer` by composing the feature-specific reducers, each being responsible for the feature-specific state slice.
 ** Write container components to connect presentation components to the Redux store. *Why?* Presentation components are more re-usable if they don't know how state is shaped nor how it's managed.
 ** Use https://github.com/reduxjs/redux-thunk[redux-thunk] for async actions
+
+== Broad Overview
+
+image::docs/react-redux-container-component-overview-v02.png[]
 
 == User Interface
 
