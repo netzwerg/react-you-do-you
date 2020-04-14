@@ -47,7 +47,7 @@ When using the feature:
 
 == Broad Overview
 
-image::docs/react-redux-container-component-overview-v02.png[]
+image::docs/container-vs-component.png[]
 
 == User Interface
 
