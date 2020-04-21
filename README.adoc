@@ -36,7 +36,7 @@ When using the feature:
 == State Management
 
 * Keep state in a *fully typed, immutable* model:
-** Use interfaces or type aliases rather than classes
+** Use interfaces or type aliases rather than classes (rule of thumb: prefer interfaces because they give better compile error message, use type aliases for sum type awesomeness)
 ** Use TypeScript's `readonly` keyword
 ** Use https://github.com/immutable-js/immutable-js[immutable] collections
 * Use https://redux.js.org/[Redux] to store and manage state:
