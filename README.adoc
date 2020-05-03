@@ -107,4 +107,4 @@ Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in 
 
 Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in the `src` directory, automatically *fixing* problems.
 
-&copy; Rahel Lüthy – 2020
+&copy; Rahel Lüthy 2020 – link:LICENSE[MIT License]
