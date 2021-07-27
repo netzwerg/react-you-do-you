@@ -2,27 +2,28 @@
 
 An example of how I use React + Redux + Material-UI + TypeScript.
 
-Or: The code I wish existed when I got started.
+Or: The code I wish existed when I got started. +
+Or: A project template to start off on the right foot.
 
 This is how I do it – *you do you* 💖
 
-image:https://codesandbox.io/static/img/play-codesandbox.svg["Edit react-you-do-you", link="https://codesandbox.io/s/github/netzwerg/react-you-do-you/tree/master/?fontsize=14"]
-
 == Setup & Tooling
-** https://facebook.github.io/create-react-app[create-react-app] for project setup:
+**  https://reactjs.org[React 17] based on https://facebook.github.io/create-react-app[create-react-app]:
 *** Compilation, linting, etc.
 *** Development mode with auto-reloading
 *** Test watcher
 *** Optimized production build
 *** see <<scripts, Available Scripts>>
+** https://www.typescriptlang.org/[TypeScript 4.3] for compile-time safety
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
-** http://extension.remotedev.io/[Redux DevTools] for state management debugging
+** https://redux-toolkit.js.org[Redux Toolkit] for state management
+** https://material-ui.com/[Material UI 4] component library (incl. CSS-in-TS)
 
 == Structure
 Organize *by feature*:
 
 * Each feature gets its own folder:
-** Defines its own model/actions/reducer
+** Defines its own slice of models/actions/reducer
 ** Defines its own components, clearly separated into presentation (inside `components` folder) and glue-code/logic (inside `containers` folder)
 ** Exports selectively through its `index.ts` file
 
@@ -37,13 +38,12 @@ When using the feature:
 
 * Keep state in a *fully typed, immutable* model:
 ** Use interfaces or type aliases rather than classes (rule of thumb: prefer interfaces because they give better compile error message, use type aliases for sum type awesomeness)
-** Use TypeScript's `readonly` keyword
-** Use https://github.com/immutable-js/immutable-js[immutable] collections
-* Use https://redux.js.org/[Redux] to store and manage state:
-** Define a `RootState` by composing the various feature-specific models
-** Define a `RootReducer` by composing the feature-specific reducers, each being responsible for the feature-specific state slice.
+** Use TypeScript's `readonly` keyword and `Readonly[Array|Stream|Set|Map]` utility types
+* Use https://redux-toolkit.js.org[Redux Toolkit], an _"opinionated, batteries-included toolset for efficient Redux development"_
+** Compose feature-specific reducers
 ** Write container components to connect presentation components to the Redux store. *Why?* Presentation components are more re-usable if they don't know how state is shaped nor how it's managed.
 ** Use https://github.com/reduxjs/redux-thunk[redux-thunk] for async actions
+** Optional: https://redux-toolkit.js.org/usage/immer-reducers[Write Reducers with Immer]
 
 == Broad Overview
 
@@ -57,25 +57,23 @@ Use https://material-ui.com/[Material-UI], a React component library based on ht
 * Theme support (e.g. light vs dark)
 * CSS in JS (or in TS, actually): Reusable, component-scoped styles
 
-My CSS skills are embarrassing, but https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout[CSS Grid Layout] gives me super powers.
-I use it for everything.
-
 == Testing
 
 I am mostly developing prototypes these days, so I am not an expert when it comes to testing.
 However, this is the minimum I *always* test:
 
-* Root reducer: Making sure each action is handled correctly (~80% of my logic)
-* Error-free rendering of each component
+* Slices: Making sure each action is handled correctly (~80% of my logic)
+* Error-free rendering of each component ("Rendering Smoke Tests")
 
 == Usage
 
-```
+[source]
+----
 git clone https://github.com/netzwerg/react-you-do-you.git
 cd react-you-do-you
 yarn install
 yarn start
-```
+----
 
 _Feel free to use `npm` rather than `yarn` – I have a slight preference for `yarn`, mainly because of https://yarnpkg.com/lang/en/docs/selective-version-resolutions/[resolutions] support_
 
@@ -107,4 +105,4 @@ Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in 
 
 Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in the `src` directory, automatically *fixing* problems.
 
-&copy; Rahel Lüthy 2020 – link:LICENSE[MIT License]
+&copy; Rahel Lüthy 2021 – link:LICENSE[MIT License]
