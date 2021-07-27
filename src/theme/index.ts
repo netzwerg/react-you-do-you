@@ -1,4 +1,2 @@
-export * from './actions'
-export * from './model'
+export { themeReducer, toggleTheme } from './themeSlice'
 export { ThemeSwitch } from './containers/ThemeSwitch'
-export { themeReducer } from './reducer'

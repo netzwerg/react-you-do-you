@@ -1,15 +1,15 @@
 import * as React from 'react'
 import { ChatInput as ChatInputComponent } from '../components/ChatInput'
-import { addChatError, addMessage, ChatAction, fetchMessage } from '../actions'
-import { useTypedDispatch } from '../../store'
+import { useAppDispatch } from '../../store'
+import { addChatError, addChatMessage, fetchChatMessage } from '../chatSlice'
 
 const demoUrl = 'message.txt' // resides in `public` folder
 const errorMessage = 'A demo error'
 
 export const ChatInput = () => {
-  const dispatch = useTypedDispatch<ChatAction>()
-  const onAddMessage = (text: string) => dispatch(addMessage(text))
-  const onFetchAsyncMessage = () => dispatch(fetchMessage(demoUrl))
+  const dispatch = useAppDispatch()
+  const onAddMessage = (text: string) => dispatch(addChatMessage({ text }))
+  const onFetchAsyncMessage = () => dispatch(fetchChatMessage(demoUrl))
   const onDemoError = () => dispatch(addChatError(errorMessage))
   return (
     <ChatInputComponent

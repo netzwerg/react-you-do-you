@@ -1,13 +1,11 @@
 import * as React from 'react'
-import { ThemeSwitch as ThemeSwitchComp } from '../components/ThemeSwitch'
-import { ThemeAction } from '../actions'
+import { ThemeSwitch as ThemeSwitchComponent } from '../components/ThemeSwitch'
 import { toggleTheme } from '../index'
-import { useTypedDispatch, useTypedState } from '../../store'
-import { Theme } from '@material-ui/core'
+import { useAppDispatch, useAppSelector } from '../../store'
 
 export const ThemeSwitch = () => {
-  const theme = useTypedState<Theme>((s) => s.theme)
-  const dispatch = useTypedDispatch<ThemeAction>()
+  const theme = useAppSelector((s) => s.theme)
+  const dispatch = useAppDispatch()
   const onToggleTheme = () => dispatch(toggleTheme())
-  return <ThemeSwitchComp theme={theme} onToggleTheme={onToggleTheme} />
+  return <ThemeSwitchComponent theme={theme} onToggleTheme={onToggleTheme} />
 }

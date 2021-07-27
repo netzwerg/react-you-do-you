@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ChatInput } from '../../../chat/components/ChatInput'
+import { ChatInput } from './ChatInput'
 import { noOp } from '../../utils'
 
 it('renders without crashing', () => {

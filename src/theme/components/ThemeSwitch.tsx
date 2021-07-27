@@ -1,9 +1,9 @@
 import DarkThemeIcon from '@material-ui/icons/Brightness2'
 import LightThemeIcon from '@material-ui/icons/WbSunny'
 import * as React from 'react'
-import { Switch, Theme } from '@material-ui/core'
-import { darkTheme } from '../model'
+import { Switch } from '@material-ui/core'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import { AppTheme } from '../themeSlice'
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 })
 
 export interface Props {
-  readonly theme: Theme
+  readonly theme: AppTheme
   readonly onToggleTheme: () => void
 }
 
@@ -26,7 +26,7 @@ export const ThemeSwitch = ({ theme, onToggleTheme }: Props) => {
   return (
     <div className={classes.root}>
       <LightThemeIcon className={classes.icon} />
-      <Switch checked={theme === darkTheme} onChange={onToggleTheme} color={'default'} />
+      <Switch checked={theme === 'dark'} onChange={onToggleTheme} color={'default'} />
       <DarkThemeIcon className={classes.icon} />
     </div>
   )

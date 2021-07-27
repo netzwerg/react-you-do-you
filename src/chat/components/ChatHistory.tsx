@@ -1,5 +1,3 @@
-import { List as ImmutableList } from 'immutable'
-import { Message } from '../model'
 import { Card, Theme } from '@material-ui/core'
 import React from 'react'
 import CardContent from '@material-ui/core/CardContent'
@@ -7,6 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import DeleteIcon from '@material-ui/icons/Delete'
 import IconButton from '@material-ui/core/IconButton'
+import { ChatMessage } from '../chatSlice'
 
 const useStyles = makeStyles((theme: Theme) => ({
   messageCard: {
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 export interface Props {
-  readonly messages: ImmutableList<Message>
+  readonly messages: ReadonlyArray<ChatMessage>
   readonly onDeleteMessage: (timestamp: number) => void
 }
 
