@@ -2,7 +2,7 @@
   "name": "react-you-do-you",
   "version": "0.3.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "/react-you-do-you",
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
