@@ -8,7 +8,8 @@ import { AppTheme } from '../themeSlice'
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'auto 1fr auto',
+    gridTemplateColumns: 'auto auto auto',
+    justifyContent: 'start',
     alignItems: 'center',
   },
   icon: {

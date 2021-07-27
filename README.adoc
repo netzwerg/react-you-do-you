@@ -22,6 +22,7 @@ Deployed live version: ✨ https://netzwerg.github.io/react-you-do-you ✨
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
 ** https://redux-toolkit.js.org[Redux Toolkit] for state management
 ** https://material-ui.com/[Material UI 4] component library (incl. CSS-in-TS)
+** https://storybook.js.org/[Storybook] to build & test UI components in isolation
 
 == Structure
 Organize *by feature*:
@@ -69,12 +70,24 @@ However, this is the minimum I *always* test:
 * Slices: Making sure each action is handled correctly (~80% of my logic)
 * Error-free rendering of each component ("Rendering Smoke Tests")
 
+== Storybook
+
+The project contains a full https://storybook.js.org[Storybook] configuration.
+Writing stories for your UI components allows building & testing them in isolation.
+Example stories are contained in link:src/stories[src/stories].
+
+To run locally:
+
+`yarn run storybook`
+
 == Continuous Integration & Delivery
 
 On every push, tests are run via link:.github/workflows/main.yml[GitHub Actions].
 If successful, the app is deployed to https://netzwerg.github.io/react-you-do-you via GitHub Pages.
 
 == Usage
+
+=== Explore Locally
 
 [source]
 ----
@@ -85,6 +98,13 @@ yarn start
 ----
 
 _Feel free to use `npm` rather than `yarn` – I have a slight preference for `yarn`, mainly because of https://yarnpkg.com/lang/en/docs/selective-version-resolutions/[resolutions] support_
+
+=== As Project Template
+
+* Rename root folder to `my-fancy-new-project-name`
+* Replace all occurrences of `react-you-do-you` with `my-fancy-new-project-name`
+* Remove existing Git repo: `rm -rf .git`
+* Initialize a new Git repo: `git init`
 
 [[scripts]]
 == Available Scripts
@@ -113,5 +133,9 @@ Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in 
 === `yarn run lint:fix`
 
 Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in the `src` directory, automatically *fixing* problems.
+
+=== `yarn run storybook`
+
+Runs Storybook
 
 &copy; Rahel Lüthy 2021 – link:LICENSE[MIT License]
