@@ -7,10 +7,10 @@ import { defaultTheme } from '../theme/defaults'
 
 const defaultState = {
   theme: defaultTheme,
-  chat: defaultChatState
+  chat: defaultChatState,
 }
 
 export const rootReducer = (state: RootState = defaultState, action: RootAction) => ({
   theme: themeReducer(state.theme, action as ThemeAction),
-  chat: chatReducer(state.chat, action as ChatAction)
+  chat: chatReducer(state.chat, action as ChatAction),
 })

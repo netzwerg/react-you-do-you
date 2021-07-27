@@ -13,15 +13,15 @@ import {
   deleteMessage,
   DISMISS_CHAT_ERRORS,
   dismissChatErrors,
-  DismissChatErrorsAction
+  DismissChatErrorsAction,
 } from '../../chat'
 
 const initialState: RootState = {
   theme: lightTheme,
   chat: {
     messages: ImmutableList(),
-    errors: ImmutableList()
-  }
+    errors: ImmutableList(),
+  },
 }
 
 describe('root reducer', () => {
@@ -46,11 +46,11 @@ describe('root reducer', () => {
     state = rootReducer(state, addMessage('two', timestamp))
     state = rootReducer(state, addMessage('three'))
     expect(state.chat.messages.size).toEqual(3)
-    expect(state.chat.messages.find(m => m.text === 'two')).toBeTruthy()
+    expect(state.chat.messages.find((m) => m.text === 'two')).toBeTruthy()
 
     state = rootReducer(state, deleteMessage(timestamp))
     expect(state.chat.messages.size).toEqual(2)
-    expect(state.chat.messages.find(m => m.text === 'two')).toBeFalsy()
+    expect(state.chat.messages.find((m) => m.text === 'two')).toBeFalsy()
   })
   it(`should handle ${ADD_CHAT_ERROR} and ${DISMISS_CHAT_ERRORS} actions`, () => {
     const addAction: AddChatErrorAction = addChatError('A test error message')

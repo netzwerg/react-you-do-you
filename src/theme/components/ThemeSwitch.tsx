@@ -9,11 +9,11 @@ const useStyles = makeStyles({
   root: {
     display: 'grid',
     gridTemplateColumns: 'auto 1fr auto',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   icon: {
-    margin: 4
-  }
+    margin: 4,
+  },
 })
 
 export interface Props {

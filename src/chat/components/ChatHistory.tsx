@@ -11,16 +11,16 @@ import IconButton from '@material-ui/core/IconButton'
 const useStyles = makeStyles((theme: Theme) => ({
   messageCard: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
   messageCardContent: {
     display: 'grid',
     gridTemplateColumns: '1fr auto',
     '&:last-child': {
       // override material-ui default
-      paddingBottom: theme.spacing(2)
-    }
-  }
+      paddingBottom: theme.spacing(2),
+    },
+  },
 }))
 
 export interface Props {
@@ -33,7 +33,7 @@ export const ChatHistory = ({ messages, onDeleteMessage }: Props) => {
   const onDeleteButtonClick = (timestamp: number) => () => onDeleteMessage(timestamp)
   return (
     <div>
-      {messages.map(message => (
+      {messages.map((message) => (
         <Card key={message.timestamp} className={classes.messageCard}>
           <CardContent className={classes.messageCardContent}>
             <Typography>{message.text}</Typography>

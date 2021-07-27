@@ -11,18 +11,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'grid',
     gridTemplateColumns: '50% auto',
     gridColumnGap: theme.spacing(1),
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttons: {
     display: 'grid',
     gridTemplateColumns: 'auto auto',
     gridColumnGap: theme.spacing(1),
     justifyContent: 'right',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   icon: {
-    marginLeft: theme.spacing(1)
-  }
+    marginLeft: theme.spacing(1),
+  },
 }))
 
 export interface Props {

@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   toolbar: {
     display: 'grid',
     gridTemplateColumns: 'auto',
-    justifyItems: 'end'
+    justifyItems: 'end',
   },
   main: {
     display: 'grid',
@@ -19,8 +19,8 @@ const useStyles = makeStyles({
     gridRowGap: 8,
     paddingTop: 100,
     paddingLeft: '20vw',
-    paddingRight: '20vw'
-  }
+    paddingRight: '20vw',
+  },
 })
 
 export const App = () => {

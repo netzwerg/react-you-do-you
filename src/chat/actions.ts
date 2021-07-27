@@ -19,8 +19,8 @@ export const addMessage = (text: string, timestamp?: number): AddMessageAction =
     type: ADD_MESSAGE,
     message: {
       text,
-      timestamp: timestamp || Date.now()
-    }
+      timestamp: timestamp || Date.now(),
+    },
   }
 }
 
@@ -32,21 +32,21 @@ export interface DeleteMessageAction {
 export const deleteMessage = (timestamp: number): DeleteMessageAction => {
   return {
     type: DELETE_MESSAGE,
-    timestamp
+    timestamp,
   }
 }
 
 export const fetchMessage = (serviceUrl: string) => {
   return (dispatch: Dispatch<ChatAction>): Promise<ChatAction> => {
     return fetch(serviceUrl)
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           return response.text()
         }
         throw new Error('Network response not ok.')
       })
-      .then(message => dispatch(addMessage(message)))
-      .catch(error => dispatch(addChatError(error.message)))
+      .then((message) => dispatch(addMessage(message)))
+      .catch((error) => dispatch(addChatError(error.message)))
   }
 }
 
@@ -59,8 +59,8 @@ export const addChatError = (error: string): AddChatErrorAction => {
   return {
     type: ADD_CHAT_ERROR,
     error: {
-      error
-    }
+      error,
+    },
   }
 }
 
@@ -70,6 +70,6 @@ export interface DismissChatErrorsAction {
 
 export const dismissChatErrors = (): DismissChatErrorsAction => {
   return {
-    type: DISMISS_CHAT_ERRORS
+    type: DISMISS_CHAT_ERRORS,
   }
 }

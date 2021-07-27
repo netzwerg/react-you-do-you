@@ -9,7 +9,7 @@ describe('chat actions', () => {
     const testUrlError = 'test-url-error'
     const message = 'Hey there'
 
-    globalAny.fetch = jest.fn().mockImplementation(url => {
+    globalAny.fetch = jest.fn().mockImplementation((url) => {
       switch (url) {
         case `${testUrlOk}`:
           return Promise.resolve(new Response(message))
@@ -22,9 +22,9 @@ describe('chat actions', () => {
 
     const store = configureStore()
 
-    expect(store.getState().chat.messages.filter(m => m.text === message).size).toEqual(0)
+    expect(store.getState().chat.messages.filter((m) => m.text === message).size).toEqual(0)
     await fetchMessage(testUrlOk)(store.dispatch)
-    expect(store.getState().chat.messages.filter(m => m.text === message).size).toEqual(1)
+    expect(store.getState().chat.messages.filter((m) => m.text === message).size).toEqual(1)
 
     expect(store.getState().chat.errors.size).toEqual(0)
     await fetchMessage(testUrlError)(store.dispatch)

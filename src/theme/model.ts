@@ -4,12 +4,12 @@ export type ThemeState = Theme
 
 export const lightTheme: Theme = createMuiTheme({
   palette: {
-    type: 'light'
-  }
+    type: 'light',
+  },
 })
 
 export const darkTheme: Theme = createMuiTheme({
   palette: {
-    type: 'dark'
-  }
+    type: 'dark',
+  },
 })

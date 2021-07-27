@@ -10,11 +10,11 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 const useStyles = makeStyles((theme: Theme) => ({
   snackbarContent: {
     color: theme.palette.common.white,
-    backgroundColor: theme.palette.error.dark
+    backgroundColor: theme.palette.error.dark,
   },
   closeIcon: {
-    color: theme.palette.common.white
-  }
+    color: theme.palette.common.white,
+  },
 }))
 
 export interface Props {
@@ -39,7 +39,7 @@ export const ChatErrors = ({ errors, onDismissErrors }: Props) => {
         action={[
           <IconButton className={classes.closeIcon} key="close" aria-label="close" onClick={onDismissErrors}>
             <CloseIcon />
-          </IconButton>
+          </IconButton>,
         ]}
       />
     </Snackbar>

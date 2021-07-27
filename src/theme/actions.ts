@@ -8,6 +8,6 @@ export interface ToggleThemeAction {
 
 export const toggleTheme = (): ToggleThemeAction => {
   return {
-    type: TOGGLE_THEME
+    type: TOGGLE_THEME,
   }
 }
