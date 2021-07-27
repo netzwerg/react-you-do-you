@@ -67,6 +67,10 @@ However, this is the minimum I *always* test:
 * Slices: Making sure each action is handled correctly (~80% of my logic)
 * Error-free rendering of each component ("Rendering Smoke Tests")
 
+== Continuous Integration
+
+On every push, tests are run via link:.github/workflows/main.yml[GitHub Actions].
+
 == Usage
 
 [source]
