@@ -23,6 +23,7 @@ Deployed live version: ✨ https://netzwerg.github.io/react-you-do-you ✨
 ** https://redux-toolkit.js.org[Redux Toolkit] for state management
 ** https://material-ui.com/[Material UI 4] component library (incl. CSS-in-TS)
 ** https://storybook.js.org/[Storybook] to build & test UI components in isolation
+** GitHub Actions & Pages Continuous Delivery
 
 == Structure
 Organize *by feature*:
