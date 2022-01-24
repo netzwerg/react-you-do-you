@@ -16,8 +16,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "browserslist": {
@@ -59,7 +58,7 @@
   "dependencies": {
     "@material-ui/core": "4.12.2",
     "@material-ui/icons": "4.11.2",
-    "@reduxjs/toolkit": "^1.6.1",
+    "@reduxjs/toolkit": "^1.7.1",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
@@ -69,8 +68,8 @@
     "@testing-library/react": "12.0.0",
     "@types/jest": "26.0.24",
     "@types/node": "16.4.3",
-    "@types/react": "17.0.15",
-    "@types/react-dom": "17.0.9",
+    "@types/react": "17.0.38",
+    "@types/react-dom": "17.0.11",
     "@types/react-redux": "7.1.18",
     "husky": "^7.0.4",
     "lint-staged": "11.1.1",
@@ -79,7 +78,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "7.2.4",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.0",
     "storybook-addon-mui-mode": "^0.0.11",
     "typescript": "4.3.5"
   },
