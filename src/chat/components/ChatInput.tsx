@@ -1,10 +1,10 @@
-import { TextField, Theme } from '@material-ui/core'
+import { TextField, Theme } from '@mui/material'
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
-import ErrorIcon from '@material-ui/icons/Error'
-import Tooltip from '@material-ui/core/Tooltip'
-import Button from '@material-ui/core/Button'
+import makeStyles from '@mui/styles/makeStyles'
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
+import ErrorIcon from '@mui/icons-material/Error'
+import Tooltip from '@mui/material/Tooltip'
+import Button from '@mui/material/Button'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -45,13 +45,7 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Pr
 
   return (
     <div className={classes.root}>
-      <TextField
-        value={message}
-        label="Compose Message"
-        variant="outlined"
-        onChange={onChange}
-        onKeyPress={onKeyPress}
-      />
+      <TextField value={message} label="Compose Message" onChange={onChange} onKeyPress={onKeyPress} />
       <div className={classes.buttons}>
         <Tooltip title={'Fetch Async Message'}>
           <Button color="primary" variant="outlined" onClick={onFetchAsyncMessage}>

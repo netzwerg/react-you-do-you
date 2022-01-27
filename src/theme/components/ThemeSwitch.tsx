@@ -1,8 +1,7 @@
-import DarkThemeIcon from '@material-ui/icons/Brightness2'
-import LightThemeIcon from '@material-ui/icons/WbSunny'
-import * as React from 'react'
-import { Switch } from '@material-ui/core'
-import makeStyles from '@material-ui/core/styles/makeStyles'
+import DarkThemeIcon from '@mui/icons-material/Brightness2'
+import LightThemeIcon from '@mui/icons-material/WbSunny'
+import { Switch } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import { AppTheme } from '../themeSlice'
 
 const useStyles = makeStyles({

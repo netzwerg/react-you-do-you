@@ -1,6 +1,6 @@
 import { App as AppComponent } from '../components/App'
 import * as React from 'react'
-import { CssBaseline, MuiThemeProvider as ThemeProvider, Theme } from '@material-ui/core'
+import { CssBaseline, ThemeProvider, StyledEngineProvider, Theme } from '@mui/material'
 import { useAppSelector } from '../../store'
 import { darkTheme, lightTheme } from '../../theme'
 
@@ -9,9 +9,11 @@ export const App = () => {
   // From here on, it is safe and convenient to use the `useTheme` hook
   const theme = useAppSelector<Theme>((s) => (s.theme === 'dark' ? darkTheme : lightTheme))
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppComponent />
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <AppComponent />
+      </ThemeProvider>
+    </StyledEngineProvider>
   )
 }

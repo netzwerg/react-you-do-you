@@ -1,10 +1,10 @@
-import { Card, Theme } from '@material-ui/core'
+import { Card, Theme } from '@mui/material'
 import React from 'react'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import DeleteIcon from '@material-ui/icons/Delete'
-import IconButton from '@material-ui/core/IconButton'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import makeStyles from '@mui/styles/makeStyles'
+import DeleteIcon from '@mui/icons-material/Delete'
+import IconButton from '@mui/material/IconButton'
 import { ChatMessage } from '../chatSlice'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -36,7 +36,7 @@ export const ChatHistory = ({ messages, onDeleteMessage }: Props) => {
         <Card key={message.timestamp} className={classes.messageCard}>
           <CardContent className={classes.messageCardContent}>
             <Typography>{message.text}</Typography>
-            <IconButton aria-label="delete" onClick={onDeleteButtonClick(message.timestamp)}>
+            <IconButton aria-label="delete" onClick={onDeleteButtonClick(message.timestamp)} size="large">
               <DeleteIcon />
             </IconButton>
           </CardContent>
