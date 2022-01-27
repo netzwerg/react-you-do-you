@@ -90,6 +90,8 @@ If successful, the app is deployed to https://netzwerg.github.io/react-you-do-yo
 
 === Explore Locally
 
+WARNING: Requires Node ^14.17.0 || >=16.0.0 (https://github.com/facebook/create-react-app/issues/11792#issuecomment-998851765[Details])
+
 [source]
 ----
 git clone https://github.com/netzwerg/react-you-do-you.git
