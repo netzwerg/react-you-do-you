@@ -1,6 +1,6 @@
+import React from 'react'
 import DarkThemeIcon from '@material-ui/icons/Brightness2'
 import LightThemeIcon from '@material-ui/icons/WbSunny'
-import * as React from 'react'
 import { Switch } from '@material-ui/core'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { AppTheme } from '../themeSlice'
