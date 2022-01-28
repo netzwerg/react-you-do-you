@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx yarpm-yarn lint-staged && npx tsc && npx yarpm-yarn run lint
+npx -p yarpm yarpm-yarn lint-staged && npx tsc && npx -p yarpm yarpm-yarn run lint
