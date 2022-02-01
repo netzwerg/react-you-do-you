@@ -1,3 +1,5 @@
+import { vi } from 'vitest'
+import { Response } from 'node-fetch'
 import { createStore } from '../store'
 import {
   addChatError,
@@ -49,7 +51,7 @@ describe('chatSlice', () => {
     const testUrlError = 'test-url-error'
     const message = 'Hey there'
 
-    globalAny.fetch = jest.fn().mockImplementation((url) => {
+    globalAny.fetch = vi.fn().mockImplementation((url) => {
       switch (url) {
         case `${testUrlOk}`:
           return Promise.resolve(new Response(message))

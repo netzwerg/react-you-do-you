@@ -1,5 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { render, screen } from '../../test/test-utils'
 import { Provider } from 'react-redux'
 import { App } from './App'
 import { store } from '../../store'
@@ -10,7 +9,6 @@ it('renders without crashing', () => {
       <App />
     </Provider>
   )
-  const div = document.createElement('div')
-  ReactDOM.render(<Root />, div)
-  ReactDOM.unmountComponentAtNode(div)
+  render(<Root />)
+  expect(screen.getByText(/React You Do You/)).toBeInTheDocument()
 })

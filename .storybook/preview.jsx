@@ -1,5 +1,6 @@
-import { useMemo } from 'react'
+import React from 'react'
 import { MuiThemeProvider } from '@material-ui/core/styles'
+import { useDarkMode } from 'storybook-dark-mode'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { darkTheme, lightTheme } from '../src/theme'
 
@@ -13,9 +14,10 @@ export const parameters = {
   },
 }
 
-const withMuiTheme = (Story, context) => {
-  const mode = context.globals?.muiMode
-  const theme = useMemo(() => (mode === 'light' ? lightTheme : darkTheme), [mode])
+const withMuiTheme = (Story, { args }) => {
+  const darkMode = useDarkMode() || args.theme === 'dark'
+  const theme = !darkMode ? lightTheme : darkTheme
+
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />

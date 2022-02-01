@@ -1,17 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ThemeProvider, createTheme } from '@mui/material'
+import { render, screen } from '../../test/test-utils'
 import { ChatHistory } from './ChatHistory'
 import { noOp } from '../../utils'
+import { createTheme, ThemeProvider } from '@mui/material'
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  const theme = createTheme()
-  ReactDOM.render(
-    <ThemeProvider theme={theme}>
-      <ChatHistory messages={[]} onDeleteMessage={noOp} />
-    </ThemeProvider>,
-    div
+  render(
+    <ThemeProvider theme={createTheme()}>
+      <ChatHistory messages={[{ text: 'Test Message', timestamp: 0 }]} onDeleteMessage={noOp} />
+    </ThemeProvider>
   )
-  ReactDOM.unmountComponentAtNode(div)
+  expect(screen.getByText('Test Message')).toBeInTheDocument()
 })

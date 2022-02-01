@@ -1,9 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { vi } from 'vitest'
+import { render, screen, userEvent } from '../../test/test-utils'
 import { ThemeSwitch } from './ThemeSwitch'
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<ThemeSwitch theme={'light'} onToggleTheme={() => {}} />, div)
-  ReactDOM.unmountComponentAtNode(div)
+  const toggleMock = vi.fn()
+
+  render(<ThemeSwitch theme={'light'} onToggleTheme={toggleMock} />)
+
+  const toggler = screen.getByRole('checkbox')
+
+  expect(toggler).toBeInTheDocument()
+
+  userEvent.click(toggler)
+
+  expect(toggleMock).toHaveBeenCalled()
 })

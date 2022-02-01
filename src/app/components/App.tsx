@@ -30,7 +30,7 @@ export const App = () => {
     <div className="App">
       <AppBar>
         <Toolbar className={classes.toolbar}>
-          <Typography>{`React You Do You – v${process.env.REACT_APP_VERSION}`}</Typography>
+          <Typography>{`React You Do You – v${import.meta.env.VITE_APP_VERSION}`}</Typography>
           <ThemeSwitch />
         </Toolbar>
       </AppBar>

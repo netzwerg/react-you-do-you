@@ -1,17 +1,34 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ThemeProvider, createTheme } from '@mui/material'
+import { vi } from 'vitest'
+import { render, screen, userEvent, waitFor } from '../../test/test-utils'
 import { ChatInput } from './ChatInput'
 import { noOp } from '../../utils'
+import { createTheme, ThemeProvider } from '@mui/material'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  const theme = createTheme()
-  ReactDOM.render(
-    <ThemeProvider theme={theme}>
-      <ChatInput onAddMessage={noOp} onFetchAsyncMessage={noOp} onDemoError={noOp} />
-    </ThemeProvider>,
-    div
+it('renders without crashing', async () => {
+  const onAddMessageMock = vi.fn()
+
+  render(
+    <ThemeProvider theme={createTheme()}>
+      <ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={noOp} onDemoError={noOp} />
+    </ThemeProvider>
   )
-  ReactDOM.unmountComponentAtNode(div)
+
+  //screen.logTestingPlaygroundURL()
+
+  const input = screen.getByRole('textbox')
+
+  expect(input).toBeInTheDocument()
+
+  userEvent.type(input, 'My custom Message')
+
+  expect(input).toHaveValue('My custom Message')
+
+  userEvent.type(input, '{Enter}')
+
+  await waitFor(() => {
+    expect(input).toHaveValue('')
+  })
+
+  expect(onAddMessageMock).toHaveBeenCalled()
+  expect(onAddMessageMock).toHaveBeenCalledWith('My custom Message')
 })
