@@ -1,29 +1,9 @@
-import { TextField, Theme } from '@mui/material'
+import { Box, TextField } from '@mui/material'
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
-import makeStyles from '@mui/styles/makeStyles'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 import ErrorIcon from '@mui/icons-material/Error'
 import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
-
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: '50% auto',
-    gridColumnGap: theme.spacing(1),
-    alignItems: 'center',
-  },
-  buttons: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridColumnGap: theme.spacing(1),
-    justifyContent: 'right',
-    alignItems: 'center',
-  },
-  icon: {
-    marginLeft: theme.spacing(1),
-  },
-}))
 
 export interface Props {
   readonly onAddMessage: (text: string) => void
@@ -32,7 +12,6 @@ export interface Props {
 }
 
 export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Props) => {
-  const classes = useStyles()
   const [message, setMessage] = useState<string>('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)
@@ -44,22 +23,45 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Pr
   }
 
   return (
-    <div className={classes.root}>
+    <Box
+      sx={(theme) => ({
+        display: 'grid',
+        gridTemplateColumns: '50% auto',
+        gridColumnGap: theme.spacing(1),
+        alignItems: 'center',
+      })}
+    >
       <TextField value={message} label="Compose Message" onChange={onChange} onKeyPress={onKeyPress} />
-      <div className={classes.buttons}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'auto auto',
+          gridColumnGap: 1,
+          justifyContent: 'right',
+          alignItems: 'center',
+        }}
+      >
         <Tooltip title={'Fetch Async Message'}>
           <Button color="primary" variant="outlined" onClick={onFetchAsyncMessage}>
             Async
-            <CloudDownloadIcon className={classes.icon} />
+            <CloudDownloadIcon
+              sx={{
+                marginLeft: 1,
+              }}
+            />
           </Button>
         </Tooltip>
         <Tooltip title={'Demo Error Handling'}>
           <Button color="secondary" variant="outlined" onClick={onDemoError}>
             Error
-            <ErrorIcon className={classes.icon} />
+            <ErrorIcon
+              sx={{
+                marginLeft: 1,
+              }}
+            />
           </Button>
         </Tooltip>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

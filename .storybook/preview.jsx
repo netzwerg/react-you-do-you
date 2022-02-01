@@ -1,8 +1,7 @@
 import React from 'react'
-import { MuiThemeProvider } from '@material-ui/core/styles'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import { useDarkMode } from 'storybook-dark-mode'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { darkTheme, lightTheme } from '../src/theme'
+import { createTheme } from '@mui/material'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -16,13 +15,17 @@ export const parameters = {
 
 const withMuiTheme = (Story, { args }) => {
   const darkMode = useDarkMode() || args.theme === 'dark'
-  const theme = !darkMode ? lightTheme : darkTheme
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  })
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Story />
-    </MuiThemeProvider>
+    </ThemeProvider>
   )
 }
 
