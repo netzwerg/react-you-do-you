@@ -2,11 +2,16 @@ import { vi } from 'vitest'
 import { render, screen, userEvent, waitFor } from '../../test/test-utils'
 import { ChatInput } from './ChatInput'
 import { noOp } from '../../utils'
+import { createTheme, ThemeProvider } from '@mui/material'
 
 it('renders without crashing', async () => {
   const onAddMessageMock = vi.fn()
 
-  render(<ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={noOp} onDemoError={noOp} />)
+  render(
+    <ThemeProvider theme={createTheme()}>
+      <ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={noOp} onDemoError={noOp} />
+    </ThemeProvider>
+  )
 
   //screen.logTestingPlaygroundURL()
 

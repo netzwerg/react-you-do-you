@@ -1,26 +1,10 @@
-import { Card, Theme } from '@material-ui/core'
+import { Card } from '@mui/material'
 import React from 'react'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import DeleteIcon from '@material-ui/icons/Delete'
-import IconButton from '@material-ui/core/IconButton'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import DeleteIcon from '@mui/icons-material/Delete'
+import IconButton from '@mui/material/IconButton'
 import { ChatMessage } from '../chatSlice'
-
-const useStyles = makeStyles((theme: Theme) => ({
-  messageCard: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-  messageCardContent: {
-    display: 'grid',
-    gridTemplateColumns: '1fr auto',
-    '&:last-child': {
-      // override material-ui default
-      paddingBottom: theme.spacing(2),
-    },
-  },
-}))
 
 export interface Props {
   readonly messages: ReadonlyArray<ChatMessage>
@@ -28,15 +12,29 @@ export interface Props {
 }
 
 export const ChatHistory = ({ messages, onDeleteMessage }: Props) => {
-  const classes = useStyles()
   const onDeleteButtonClick = (timestamp: number) => () => onDeleteMessage(timestamp)
   return (
     <div>
       {messages.map((message) => (
-        <Card key={message.timestamp} className={classes.messageCard}>
-          <CardContent className={classes.messageCardContent}>
+        <Card
+          key={message.timestamp}
+          sx={(theme) => ({
+            marginTop: theme.spacing(1),
+            marginBottom: theme.spacing(1),
+          })}
+        >
+          <CardContent
+            sx={(theme) => ({
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              ['&:last-child']: {
+                // override material-ui default
+                paddingBottom: theme.spacing(2),
+              },
+            })}
+          >
             <Typography>{message.text}</Typography>
-            <IconButton aria-label="delete" onClick={onDeleteButtonClick(message.timestamp)}>
+            <IconButton aria-label="delete" onClick={onDeleteButtonClick(message.timestamp)} size="large">
               <DeleteIcon />
             </IconButton>
           </CardContent>

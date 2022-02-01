@@ -3,7 +3,7 @@ import { ChatInput as ChatInputComponent } from '../components/ChatInput'
 import { useAppDispatch } from '../../store'
 import { addChatError, addChatMessage, fetchChatMessage } from '../chatSlice'
 
-const demoUrl = 'message.txt' // resides in `public` folder
+const demoUrl = 'message.txt'
 const errorMessage = 'A demo error'
 
 export const ChatInput = () => {
