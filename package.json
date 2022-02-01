@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "start": "vite",
     "test": "vitest",
+    "test:ci": "CI=true vitest run",
     "coverage": "vitest run --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",

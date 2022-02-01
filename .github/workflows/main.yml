@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
-        
+
       - name: Setup ⚙️
         uses: actions/setup-node@v2
         with:
@@ -20,7 +20,7 @@ jobs:
       - name: Install & Test ✅
         run: |
           yarn install
-          yarn run test
+          yarn run test:ci
 
       - name: Build 🔧
         run:
