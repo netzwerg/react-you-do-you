@@ -1,10 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { render, screen } from '../../test/test-utils'
 import { ChatHistory } from './ChatHistory'
 import { noOp } from '../../utils'
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<ChatHistory messages={[]} onDeleteMessage={noOp} />, div)
-  ReactDOM.unmountComponentAtNode(div)
+  render(<ChatHistory messages={[{ text: 'Test Message', timestamp: 0 }]} onDeleteMessage={noOp} />)
+  expect(screen.getByText('Test Message')).toBeInTheDocument()
 })

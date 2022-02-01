@@ -12,13 +12,13 @@ This is how I do it – *you do you* 💖
 Deployed live version: ✨ https://netzwerg.github.io/react-you-do-you ✨
 
 == Setup & Tooling
-**  https://reactjs.org[React 17] based on https://facebook.github.io/create-react-app[create-react-app]:
+**  https://reactjs.org[React 17] based on https://vitejs.dev[Vite]:
 *** Compilation, linting, etc.
 *** Development mode with auto-reloading
 *** Test watcher
 *** Optimized production build
 *** see <<scripts, Available Scripts>>
-** https://www.typescriptlang.org/[TypeScript 4.3] for compile-time safety
+** https://www.typescriptlang.org/[TypeScript 4.4] for compile-time safety
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
 ** https://redux-toolkit.js.org[Redux Toolkit] for state management
 ** https://material-ui.com/[Material UI 4] component library (incl. CSS-in-TS)
