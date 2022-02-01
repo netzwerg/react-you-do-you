@@ -21,7 +21,7 @@ Deployed live version: ✨ https://netzwerg.github.io/react-you-do-you ✨
 ** https://www.typescriptlang.org/[TypeScript 4.4] for compile-time safety
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
 ** https://redux-toolkit.js.org[Redux Toolkit] for state management
-** https://material-ui.com/[Material UI 4] component library (incl. CSS-in-TS)
+** https://material-ui.com/[Material UI 5] component library (using https://mui.com/system/basics/[MUI System] CSS utilities)
 ** https://storybook.js.org/[Storybook] to build & test UI components in isolation
 ** GitHub Actions & Pages Continuous Delivery
 
@@ -57,11 +57,11 @@ image::docs/container-vs-component.png[]
 
 == User Interface
 
-Use https://material-ui.com/[Material-UI], a React component library based on https://en.m.wikipedia.org/wiki/Material_Design[Material Design]:
+Use https://material-ui.com/[Material UI 5], a React component library based on https://en.m.wikipedia.org/wiki/Material_Design[Material Design]:
 
 * Huge selection of components, fully customizable
 * Theme support (e.g. light vs dark)
-* CSS in JS (or in TS, actually): Reusable, component-scoped styles
+* https://mui.com/system/basics/[MUI System] CSS utilities
 
 == Testing
 
