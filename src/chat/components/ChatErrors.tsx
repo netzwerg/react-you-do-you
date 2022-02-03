@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Snackbar, Theme } from '@mui/material'
+import { Snackbar } from '@mui/material'
 import SnackbarContent from '@mui/material/SnackbarContent'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'

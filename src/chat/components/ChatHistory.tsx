@@ -27,7 +27,7 @@ export const ChatHistory = ({ messages, onDeleteMessage }: Props) => {
             sx={(theme) => ({
               display: 'grid',
               gridTemplateColumns: '1fr auto',
-              ['&:last-child']: {
+              '&:last-child': {
                 // override material-ui default
                 paddingBottom: theme.spacing(2),
               },
