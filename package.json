@@ -5,7 +5,7 @@
   "homepage": "/react-you-do-you",
   "scripts": {
     "build": "tsc && vite build",
-    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "lint": "eslint --max-warnings 0 './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
     "prepreview": "yarn build",
     "preview": "vite preview",
