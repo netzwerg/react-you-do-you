@@ -4,7 +4,7 @@ export type AppTheme = 'light' | 'dark'
 
 const themeSlice = createSlice({
   name: 'theme',
-  initialState: 'light' as AppTheme,
+  initialState: 'dark' as AppTheme,
   reducers: {
     toggleTheme: (state) => {
       return state === 'light' ? 'dark' : 'light'

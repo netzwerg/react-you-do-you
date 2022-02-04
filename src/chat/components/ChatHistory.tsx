@@ -1,10 +1,26 @@
-import { Card } from '@mui/material'
+import { Card, Theme } from '@mui/material'
 import React from 'react'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
+import { makeStyles } from '../../utils'
 import DeleteIcon from '@mui/icons-material/Delete'
 import IconButton from '@mui/material/IconButton'
 import { ChatMessage } from '../chatSlice'
+
+const useStyles = makeStyles()((theme: Theme) => ({
+  messageCard: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
+  messageCardContent: {
+    display: 'grid',
+    gridTemplateColumns: '1fr auto',
+    '&:last-child': {
+      // override material-ui default
+      paddingBottom: theme.spacing(2),
+    },
+  },
+}))
 
 export interface Props {
   readonly messages: ReadonlyArray<ChatMessage>
@@ -12,27 +28,13 @@ export interface Props {
 }
 
 export const ChatHistory = ({ messages, onDeleteMessage }: Props) => {
+  const { classes } = useStyles()
   const onDeleteButtonClick = (timestamp: number) => () => onDeleteMessage(timestamp)
   return (
     <div>
       {messages.map((message) => (
-        <Card
-          key={message.timestamp}
-          sx={(theme) => ({
-            marginTop: theme.spacing(1),
-            marginBottom: theme.spacing(1),
-          })}
-        >
-          <CardContent
-            sx={(theme) => ({
-              display: 'grid',
-              gridTemplateColumns: '1fr auto',
-              ['&:last-child']: {
-                // override material-ui default
-                paddingBottom: theme.spacing(2),
-              },
-            })}
-          >
+        <Card key={message.timestamp} className={classes.messageCard}>
+          <CardContent className={classes.messageCardContent}>
             <Typography>{message.text}</Typography>
             <IconButton aria-label="delete" onClick={onDeleteButtonClick(message.timestamp)} size="large">
               <DeleteIcon />

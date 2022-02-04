@@ -6,8 +6,8 @@ describe('themeSlice', () => {
     const store = createStore()
     const getTheme = () => store.getState().theme
 
-    expect(getTheme()).toEqual('light')
-    store.dispatch(toggleTheme())
     expect(getTheme()).toEqual('dark')
+    store.dispatch(toggleTheme())
+    expect(getTheme()).toEqual('light')
   })
 })
