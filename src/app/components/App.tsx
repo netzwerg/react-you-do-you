@@ -2,11 +2,11 @@ import React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import { ThemeSwitch } from '../../theme'
-import makeStyles from '@mui/styles/makeStyles'
 import { ChatErrors, ChatHistory, ChatInput } from '../../chat'
 import { Typography } from '@mui/material'
+import { makeStyles } from '../../utils'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   toolbar: {
     display: 'grid',
     gridTemplateColumns: 'auto auto',
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 })
 
 export const App = () => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   return (
     <div className="App">
       <AppBar>

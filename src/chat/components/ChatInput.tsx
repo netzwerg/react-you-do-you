@@ -1,12 +1,12 @@
 import { TextField, Theme } from '@mui/material'
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from '../../utils'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 import ErrorIcon from '@mui/icons-material/Error'
 import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   root: {
     display: 'grid',
     gridTemplateColumns: '50% auto',
@@ -32,7 +32,7 @@ export interface Props {
 }
 
 export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Props) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const [message, setMessage] = useState<string>('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)

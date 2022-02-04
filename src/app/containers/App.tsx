@@ -1,19 +1,25 @@
 import { App as AppComponent } from '../components/App'
-import * as React from 'react'
-import { CssBaseline, ThemeProvider, StyledEngineProvider, Theme } from '@mui/material'
-import { useAppSelector } from '../../store'
-import { darkTheme, lightTheme } from '../../theme'
+import { CacheProvider } from '@emotion/react'
+import createCache from '@emotion/cache'
+import { ThemeProvider } from '@mui/material/styles'
+import { useCustomTheme } from '../../theme'
+import { CssBaseline } from '@mui/material'
+
+export const muiCache = createCache({
+  key: 'mui',
+  prepend: true,
+})
 
 export const App = () => {
   // This is the only place we need to access the theme via our own model
   // From here on, it is safe and convenient to use the `useTheme` hook
-  const theme = useAppSelector<Theme>((s) => (s.theme === 'dark' ? darkTheme : lightTheme))
+  const theme = useCustomTheme()
   return (
-    <StyledEngineProvider injectFirst>
+    <CacheProvider value={muiCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AppComponent />
       </ThemeProvider>
-    </StyledEngineProvider>
+    </CacheProvider>
   )
 }

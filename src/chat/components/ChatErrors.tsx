@@ -3,10 +3,10 @@ import { Snackbar, Theme } from '@mui/material'
 import SnackbarContent from '@mui/material/SnackbarContent'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from '../../utils'
 import { ChatError } from '../chatSlice'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   snackbarContent: {
     color: theme.palette.common.white,
     backgroundColor: theme.palette.error.dark,
@@ -22,7 +22,7 @@ export interface Props {
 }
 
 export const ChatErrors = ({ errors, onDismissErrors }: Props) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false)
 
   useEffect(() => setOpenSnackbar(errors.length > 0), [errors.length])

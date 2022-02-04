@@ -2,12 +2,12 @@ import { Card, Theme } from '@mui/material'
 import React from 'react'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from '../../utils'
 import DeleteIcon from '@mui/icons-material/Delete'
 import IconButton from '@mui/material/IconButton'
 import { ChatMessage } from '../chatSlice'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   messageCard: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
@@ -28,7 +28,7 @@ export interface Props {
 }
 
 export const ChatHistory = ({ messages, onDeleteMessage }: Props) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const onDeleteButtonClick = (timestamp: number) => () => onDeleteMessage(timestamp)
   return (
     <div>

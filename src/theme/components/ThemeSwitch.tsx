@@ -1,10 +1,10 @@
 import DarkThemeIcon from '@mui/icons-material/Brightness2'
 import LightThemeIcon from '@mui/icons-material/WbSunny'
 import { Switch } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from '../../utils'
 import { AppTheme } from '../themeSlice'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   root: {
     display: 'grid',
     gridTemplateColumns: 'auto auto auto',
@@ -22,7 +22,7 @@ export interface Props {
 }
 
 export const ThemeSwitch = ({ theme, onToggleTheme }: Props) => {
-  const classes = useStyles(theme)
+  const { classes } = useStyles()
   return (
     <div className={classes.root}>
       <LightThemeIcon className={classes.icon} />
