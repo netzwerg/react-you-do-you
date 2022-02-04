@@ -27,7 +27,7 @@ const useStyles = makeStyles()({
 export const App = () => {
   const { classes } = useStyles()
   return (
-    <div className="App">
+    <>
       <AppBar>
         <Toolbar className={classes.toolbar}>
           <Typography>{`React You Do You – v${import.meta.env.VITE_APP_VERSION}`}</Typography>
@@ -39,6 +39,6 @@ export const App = () => {
         <ChatHistory />
       </div>
       <ChatErrors />
-    </div>
+    </>
   )
 }
