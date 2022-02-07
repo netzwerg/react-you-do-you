@@ -6,11 +6,20 @@ import { ChatErrors, ChatHistory, ChatInput } from '../../chat'
 import { Typography } from '@mui/material'
 import { makeStyles } from '../../utils'
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()((theme) => ({
   toolbar: {
     display: 'grid',
     gridTemplateColumns: 'auto auto',
     justifyItems: 'end',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
+    },
+  },
+  title: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: theme.typography.caption.fontSize,
+    },
   },
   main: {
     display: 'grid',
@@ -21,8 +30,12 @@ const useStyles = makeStyles()({
     paddingTop: 100,
     paddingLeft: '20vw',
     paddingRight: '20vw',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
+    },
   },
-})
+}))
 
 export const App = () => {
   const { classes } = useStyles()
@@ -30,7 +43,9 @@ export const App = () => {
     <>
       <AppBar>
         <Toolbar className={classes.toolbar}>
-          <Typography>{`React You Do You – v${import.meta.env.VITE_APP_VERSION}`}</Typography>
+          <Typography className={classes.title} noWrap>{`React You Do You – v${
+            import.meta.env.VITE_APP_VERSION
+          }`}</Typography>
           <ThemeSwitch />
         </Toolbar>
       </AppBar>

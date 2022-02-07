@@ -1,4 +1,4 @@
-import { TextField, Theme } from '@mui/material'
+import { Hidden, TextField, Theme, Typography } from '@mui/material'
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
 import { makeStyles } from '../../utils'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
@@ -17,11 +17,31 @@ const useStyles = makeStyles()((theme: Theme) => ({
     display: 'grid',
     gridTemplateColumns: 'auto auto',
     gridColumnGap: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      gridColumnGap: theme.spacing(0.5),
+    },
     justifyContent: 'right',
     alignItems: 'center',
   },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+  buttonLabel: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: theme.typography.caption.fontSize,
+    },
+  },
   icon: {
     marginLeft: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 0,
+      marginRight: 0,
+    },
   },
 }))
 
@@ -45,17 +65,35 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Pr
 
   return (
     <div className={classes.root}>
-      <TextField value={message} label="Compose Message" onChange={onChange} onKeyPress={onKeyPress} />
+      <TextField value={message} label="Compose Message" size={'small'} onChange={onChange} onKeyPress={onKeyPress} />
       <div className={classes.buttons}>
         <Tooltip title={'Fetch Async Message'}>
-          <Button color="primary" variant="outlined" onClick={onFetchAsyncMessage}>
-            Async
+          <Button
+            className={classes.button}
+            color="primary"
+            variant="outlined"
+            fullWidth
+            size={'large'}
+            onClick={onFetchAsyncMessage}
+          >
+            <Hidden smDown>
+              <Typography className={classes.buttonLabel}>Async</Typography>
+            </Hidden>
             <CloudDownloadIcon className={classes.icon} />
           </Button>
         </Tooltip>
         <Tooltip title={'Demo Error Handling'}>
-          <Button color="secondary" variant="outlined" onClick={onDemoError}>
-            Error
+          <Button
+            className={classes.button}
+            color="secondary"
+            variant="outlined"
+            fullWidth
+            size={'large'}
+            onClick={onDemoError}
+          >
+            <Hidden smDown>
+              <Typography className={classes.buttonLabel}>Error</Typography>
+            </Hidden>
             <ErrorIcon className={classes.icon} />
           </Button>
         </Tooltip>
