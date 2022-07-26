@@ -28,17 +28,9 @@ Deployed live version: ✨ https://netzwerg.github.io/react-you-do-you ✨
 == Structure
 Organize *by feature*:
 
-* Each feature gets its own folder:
-** Defines its own slice of models/actions/reducer
-** Defines its own components, clearly separated into presentation (inside `components` folder) and glue-code/logic (inside `containers` folder)
-** Exports selectively through its `index.ts` file
-
-When using the feature:
-
-* Only ever import what is officially exported:
-** ✅ `import { Foo } from './feature-x'`
-** 🚫 `import { SecretInternalComponent } from './feature-x/components/SecretInternalComponent'`)
-* Avoid circular dependencies – sooner or later, a `shared` folder will be needed ;-)
+* Each feature gets its own folder
+* Defines its own slice of models/actions/reducer
+* Defines its own components, clearly separated into presentation (inside `components` folder) and glue-code/logic (inside `containers` folder)
 
 == State Management
 

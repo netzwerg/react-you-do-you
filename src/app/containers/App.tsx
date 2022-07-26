@@ -2,7 +2,7 @@ import { App as AppComponent } from '../components/App'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
 import { ThemeProvider } from '@mui/material/styles'
-import { useCustomTheme } from '../../theme'
+import { useCustomTheme } from '../../theme/useCustomTheme'
 import { CssBaseline } from '@mui/material'
 
 export const muiCache = createCache({

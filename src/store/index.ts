@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
-import { themeReducer } from '../theme'
-import { chatReducer } from '../chat'
+import { themeReducer } from '../theme/themeSlice'
+import { chatReducer } from '../chat/chatSlice'
 
 export const reducer = combineReducers({
   theme: themeReducer,

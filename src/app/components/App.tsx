@@ -1,10 +1,12 @@
 import React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import { ThemeSwitch } from '../../theme'
-import { ChatErrors, ChatHistory, ChatInput } from '../../chat'
+import { ThemeSwitch } from '../../theme/containers/ThemeSwitch'
 import { Typography } from '@mui/material'
 import { makeStyles } from '../../utils'
+import { ChatInput } from '../../chat/containers/ChatInput'
+import { ChatHistory } from '../../chat/containers/ChatHistory'
+import { ChatErrors } from '../../chat/containers/ChatErrors'
 
 const useStyles = makeStyles()((theme) => ({
   toolbar: {
