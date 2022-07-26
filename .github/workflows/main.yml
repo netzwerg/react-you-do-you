@@ -2,7 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -21,6 +23,10 @@ jobs:
         run: |
           yarn install
           yarn run test:ci
+
+      - name: Quality Assurance 👌
+        run: |
+          npx dpdm --warning false --tree false --exit-code circular:1 src/**
 
       - name: Build 🔧
         run:

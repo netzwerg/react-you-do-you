@@ -63,11 +63,11 @@ describe('chatSlice', () => {
     })
 
     expect(getMessages().filter((m) => m.text === message).length).toEqual(0)
-    await fetchChatMessage(testUrlOk)(store.dispatch)
+    await store.dispatch(fetchChatMessage(testUrlOk))
     expect(getMessages().filter((m) => m.text === message).length).toEqual(1)
 
     expect(getErrors().length).toEqual(0)
-    await fetchChatMessage(testUrlError)(store.dispatch)
+    await store.dispatch(fetchChatMessage(testUrlError))
     expect(getErrors().length).toEqual(1)
   })
 })

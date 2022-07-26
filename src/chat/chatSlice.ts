@@ -1,5 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { AppDispatch } from '../store'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface ChatState {
   readonly messages: ReadonlyArray<ChatMessage>
@@ -66,14 +65,16 @@ export const { addChatMessage, deleteChatMessage, addChatError, dismissChatError
 
 export const chatReducer = chatSlice.reducer
 
-export const fetchChatMessage = (serviceUrl: string) => async (dispatch: AppDispatch) => {
-  return fetch(serviceUrl)
-    .then((response) => {
-      if (response.ok) {
-        return response.text()
-      }
-      throw new Error('Network response not ok.')
-    })
-    .then((text) => dispatch(addChatMessage({ text })))
-    .catch((error) => dispatch(addChatError(error.message)))
-}
+export const fetchChatMessage = createAsyncThunk('chat/fetchChatMessage', async (serviceUrl: string, thunkAPI) => {
+  try {
+    const response = await fetch(serviceUrl)
+    if (response.ok) {
+      const text = await response.text()
+      thunkAPI.dispatch(addChatMessage({ text }))
+    } else {
+      thunkAPI.dispatch(addChatError('Network response not ok.'))
+    }
+  } catch (e: any) {
+    thunkAPI.dispatch(addChatError(e.message))
+  }
+})
