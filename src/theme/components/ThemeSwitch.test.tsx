@@ -1,17 +1,12 @@
 import { vi } from 'vitest'
-import { render, screen, userEvent } from '../../test/test-utils'
+import { screen, setup } from '../../test/test-utils'
 import { ThemeSwitch } from './ThemeSwitch'
 
-it('renders without crashing', () => {
+it('renders without crashing', async () => {
   const toggleMock = vi.fn()
-
-  render(<ThemeSwitch theme={'light'} onToggleTheme={toggleMock} />)
-
+  const { user } = setup(<ThemeSwitch theme={'light'} onToggleTheme={toggleMock} />)
   const toggler = screen.getByRole('checkbox')
-
   expect(toggler).toBeInTheDocument()
-
-  userEvent.click(toggler)
-
+  await user.click(toggler)
   expect(toggleMock).toHaveBeenCalled()
 })

@@ -9,14 +9,8 @@ export default {
 
 const Template: Story<Props> = (args) => <ThemeSwitch {...args} />
 
-export const LightThemeSelected = Template.bind({})
-LightThemeSelected.args = {
+export const Default = Template.bind({})
+Default.args = {
   theme: 'light',
-  onToggleTheme: () => {},
-}
-
-export const DarkThemeSelected = Template.bind({})
-DarkThemeSelected.args = {
-  theme: 'dark',
   onToggleTheme: () => {},
 }
