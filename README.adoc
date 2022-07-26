@@ -75,8 +75,13 @@ To run locally:
 
 == Continuous Integration & Delivery
 
-On every push, tests are run via link:.github/workflows/main.yml[GitHub Actions].
-If successful, the app is deployed to https://netzwerg.github.io/react-you-do-you via GitHub Pages.
+On every push or pull request, a set of link:.github/workflows/main.yml[GitHub Actions] are kicked off:
+
+* Run all tests
+* Check for circular dependencies
+* Build & deploy the app
+
+If successful, the app is available on `https://<username>.github.io/<reponame>` (via GitHub Pages).
 
 == Usage
 
