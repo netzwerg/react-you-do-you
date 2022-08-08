@@ -1,7 +1,10 @@
 import React from 'react'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { useDarkMode } from 'storybook-dark-mode'
-import { createTheme } from '@mui/material'
+import { Provider } from 'react-redux'
+import { store } from '../src/store'
+import { muiCache } from '../src/app/containers/App'
+import { CacheProvider } from '@emotion/react'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -15,17 +18,18 @@ export const parameters = {
 
 const withMuiTheme = (Story, { args }) => {
   const darkMode = useDarkMode() || args.theme === 'dark'
-  const theme = createTheme({
-    palette: {
-      mode: darkMode ? 'dark' : 'light',
-    },
-  })
+  const themePaletteMode = darkMode ? 'dark' : 'light'
+  const theme = createTheme({ palette: { mode: themePaletteMode } })
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Story />
-    </ThemeProvider>
+    <Provider store={store}>
+      <CacheProvider value={muiCache}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Story />
+        </ThemeProvider>
+      </CacheProvider>
+    </Provider>
   )
 }
 

@@ -1,17 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { addAlert } from '../alert/alertSlice'
 
 export interface ChatState {
   readonly messages: ReadonlyArray<ChatMessage>
-  readonly errors: ReadonlyArray<ChatError>
 }
 
 export interface ChatMessage {
   readonly timestamp: number
   readonly text: string
-}
-
-export interface ChatError {
-  readonly error: string
 }
 
 const initialState: ChatState = {
@@ -25,7 +21,6 @@ const initialState: ChatState = {
       text: 'Hey there!',
     },
   ],
-  errors: [],
 }
 
 interface AddMessagePayload {
@@ -48,20 +43,10 @@ const chatSlice = createSlice({
       ...state,
       messages: state.messages.filter((m) => m.timestamp !== action.payload),
     }),
-    addChatError: (state: ChatState, action: PayloadAction<string>) => ({
-      ...state,
-      errors: state.errors.concat({
-        error: action.payload,
-      }),
-    }),
-    dismissChatErrors: (state: ChatState) => ({
-      ...state,
-      errors: [],
-    }),
   },
 })
 
-export const { addChatMessage, deleteChatMessage, addChatError, dismissChatErrors } = chatSlice.actions
+export const { addChatMessage, deleteChatMessage } = chatSlice.actions
 
 export const chatReducer = chatSlice.reducer
 
@@ -72,9 +57,9 @@ export const fetchChatMessage = createAsyncThunk('chat/fetchChatMessage', async 
       const text = await response.text()
       thunkAPI.dispatch(addChatMessage({ text }))
     } else {
-      thunkAPI.dispatch(addChatError('Network response not ok.'))
+      thunkAPI.dispatch(addAlert({ type: 'error', topic: 'Demo', message: 'Network response not ok.' }))
     }
   } catch (e: any) {
-    thunkAPI.dispatch(addChatError(e.message))
+    thunkAPI.dispatch(addAlert({ type: 'error', topic: 'Demo', message: e.message }))
   }
 })

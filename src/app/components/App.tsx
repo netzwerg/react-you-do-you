@@ -6,13 +6,13 @@ import { Typography } from '@mui/material'
 import { makeStyles } from '../../utils'
 import { ChatInput } from '../../chat/containers/ChatInput'
 import { ChatHistory } from '../../chat/containers/ChatHistory'
-import { ChatErrors } from '../../chat/containers/ChatErrors'
+import { Alerts } from '../../alert/containers/Alerts'
 
 const useStyles = makeStyles()((theme) => ({
   toolbar: {
     display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    justifyItems: 'end',
+    gridTemplateColumns: '1fr auto auto',
+    justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1),
@@ -48,6 +48,7 @@ export const App = () => {
           <Typography className={classes.title} noWrap>{`React You Do You – v${
             import.meta.env.VITE_APP_VERSION
           }`}</Typography>
+          <Alerts />
           <ThemeSwitch />
         </Toolbar>
       </AppBar>
@@ -55,7 +56,6 @@ export const App = () => {
         <ChatInput />
         <ChatHistory />
       </div>
-      <ChatErrors />
     </>
   )
 }

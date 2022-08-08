@@ -48,15 +48,15 @@ const useStyles = makeStyles()((theme: Theme) => ({
 export interface Props {
   readonly onAddMessage: (text: string) => void
   readonly onFetchAsyncMessage: () => void
-  readonly onDemoError: () => void
+  readonly onAlert: () => void
 }
 
-export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Props) => {
+export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onAlert }: Props) => {
   const { classes } = useStyles()
   const [message, setMessage] = useState<string>('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)
-  const onKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && message.trim().length !== 0) {
       onAddMessage(message)
       setMessage('')
@@ -65,7 +65,7 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Pr
 
   return (
     <div className={classes.root}>
-      <TextField value={message} label="Compose Message" size={'small'} onChange={onChange} onKeyPress={onKeyPress} />
+      <TextField value={message} label="Compose Message" size={'small'} onChange={onChange} onKeyDown={onKeyDown} />
       <div className={classes.buttons}>
         <Tooltip title={'Fetch Async Message'}>
           <Button
@@ -82,17 +82,17 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onDemoError }: Pr
             <CloudDownloadIcon className={classes.icon} />
           </Button>
         </Tooltip>
-        <Tooltip title={'Demo Error Handling'}>
+        <Tooltip title={'Demo Alert Handling'}>
           <Button
             className={classes.button}
             color="secondary"
             variant="outlined"
             fullWidth
             size={'large'}
-            onClick={onDemoError}
+            onClick={onAlert}
           >
             <Hidden smDown>
-              <Typography className={classes.buttonLabel}>Error</Typography>
+              <Typography className={classes.buttonLabel}>Alert</Typography>
             </Hidden>
             <ErrorIcon className={classes.icon} />
           </Button>

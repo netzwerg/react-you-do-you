@@ -2,10 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 import { themeReducer } from '../theme/themeSlice'
 import { chatReducer } from '../chat/chatSlice'
+import { alertReducer } from '../alert/alertSlice'
 
 export const reducer = combineReducers({
   theme: themeReducer,
   chat: chatReducer,
+  alert: alertReducer,
 })
 
 export type RootState = ReturnType<typeof reducer>

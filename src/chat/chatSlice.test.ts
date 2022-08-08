@@ -1,15 +1,8 @@
 import { vi } from 'vitest'
 import { Response } from 'node-fetch'
 import { createStore } from '../store'
-import {
-  addChatError,
-  addChatMessage,
-  ChatError,
-  ChatMessage,
-  deleteChatMessage,
-  dismissChatErrors,
-  fetchChatMessage,
-} from './chatSlice'
+import { addChatMessage, ChatMessage, deleteChatMessage, fetchChatMessage } from './chatSlice'
+import { Alert } from '../alert/alertSlice'
 
 const globalAny = global as any
 
@@ -21,9 +14,9 @@ describe('chatSlice', () => {
   })
 
   const getMessages = (): ReadonlyArray<ChatMessage> => store.getState().chat.messages
-  const getErrors = (): ReadonlyArray<ChatError> => store.getState().chat.errors
+  const getAlerts = (): ReadonlyArray<Alert> => store.getState().alert.alerts
 
-  it(`should handle ${addChatMessage.type} action`, () => {
+  it(`handle ${addChatMessage.type} action`, () => {
     const timestamp = 1234
     const message = { text: 'test', timestamp }
     const initialMessages = getMessages()
@@ -31,22 +24,14 @@ describe('chatSlice', () => {
     expect(getMessages()).toEqual([...initialMessages, message])
   })
 
-  it(`should handle ${deleteChatMessage.type} action`, () => {
+  it(`handle ${deleteChatMessage.type} action`, () => {
     const timestampToDelete = getMessages()[0].timestamp
 
     store.dispatch(deleteChatMessage(timestampToDelete))
     expect(getMessages().find((m) => m.timestamp === timestampToDelete)).toBeFalsy()
   })
 
-  it(`should handle ${addChatError.type} and ${dismissChatErrors.type} actions`, () => {
-    expect(getErrors().length).toEqual(0)
-    store.dispatch(addChatError('a test error'))
-    expect(getErrors().length).toEqual(1)
-    store.dispatch(dismissChatErrors())
-    expect(getErrors().length).toEqual(0)
-  })
-
-  it('fetchMessage', async () => {
+  it(`${fetchChatMessage.name} action`, async () => {
     const testUrlOk = 'test-url-ok'
     const testUrlError = 'test-url-error'
     const message = 'Hey there'
@@ -66,8 +51,8 @@ describe('chatSlice', () => {
     await store.dispatch(fetchChatMessage(testUrlOk))
     expect(getMessages().filter((m) => m.text === message).length).toEqual(1)
 
-    expect(getErrors().length).toEqual(0)
+    expect(getAlerts().length).toEqual(0)
     await store.dispatch(fetchChatMessage(testUrlError))
-    expect(getErrors().length).toEqual(1)
+    expect(getAlerts().length).toEqual(1)
   })
 })

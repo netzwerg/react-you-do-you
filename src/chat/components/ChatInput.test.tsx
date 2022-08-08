@@ -9,7 +9,7 @@ it('renders without crashing', async () => {
 
   const { user } = setup(
     <ThemeProvider theme={createTheme()}>
-      <ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={noOp} onDemoError={noOp} />
+      <ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={noOp} onAlert={noOp} />
     </ThemeProvider>
   )
 
