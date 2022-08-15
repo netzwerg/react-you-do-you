@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { store } from '../src/store'
 import { muiCache } from '../src/app/containers/App'
 import { CacheProvider } from '@emotion/react'
+import { toggleTheme } from '../src/theme/themeSlice'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -20,6 +21,10 @@ const withMuiTheme = (Story, { args }) => {
   const darkMode = useDarkMode() || args.theme === 'dark'
   const themePaletteMode = darkMode ? 'dark' : 'light'
   const theme = createTheme({ palette: { mode: themePaletteMode } })
+
+  if (theme.palette.mode !== store.getState().theme) {
+    store.dispatch(toggleTheme())
+  }
 
   return (
     <Provider store={store}>
