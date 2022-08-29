@@ -15,7 +15,7 @@
     "coverage": "vitest run --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepare": "husky install"
+    "postinstall": "husky install"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
