@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { useDarkMode } from 'storybook-dark-mode'
 import { Provider } from 'react-redux'
@@ -22,9 +22,11 @@ const withMuiTheme = (Story, { args }) => {
   const themePaletteMode = darkMode ? 'dark' : 'light'
   const theme = createTheme({ palette: { mode: themePaletteMode } })
 
-  if (theme.palette.mode !== store.getState().theme) {
-    store.dispatch(toggleTheme())
-  }
+  useEffect(() => {
+    if (theme.palette.mode !== store.getState().theme) {
+      store.dispatch(toggleTheme())
+    }
+  }, [theme.palette.mode, store.dispatch, store.getState().theme])
 
   return (
     <Provider store={store}>
