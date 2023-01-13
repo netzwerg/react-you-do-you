@@ -18,7 +18,8 @@ Deployed live version: ✨ https://netzwerg.github.io/react-you-do-you ✨
 *** Test watcher
 *** Optimized production build
 *** see <<scripts, Available Scripts>>
-** https://www.typescriptlang.org/[TypeScript 4.5] for compile-time safety
+** https://yarnpkg.com/features/pnp[Yarn 3] (with Plug'n'Play i.e. without `node_modules`)
+** https://www.typescriptlang.org/[TypeScript 4.9] for compile-time safety
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
 ** https://redux-toolkit.js.org[Redux Toolkit] for state management
 ** https://material-ui.com/[Material UI 5] component library (using https://www.tss-react.dev[tss-react] for type-safe CSS)
@@ -97,8 +98,6 @@ yarn install
 yarn start
 ----
 
-_Feel free to use `npm` rather than `yarn` – I have a slight preference for `yarn`, mainly because of https://yarnpkg.com/lang/en/docs/selective-version-resolutions/[resolutions] support_
-
 === As Project Template
 
 * Rename root folder to `my-fancy-new-project-name`
@@ -138,4 +137,4 @@ Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in 
 
 Runs Storybook
 
-&copy; Rahel Lüthy 2019-2022 link:LICENSE[MIT License]
+&copy; Rahel Lüthy 2019 - 2023 link:LICENSE[MIT License]
