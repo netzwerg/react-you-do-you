@@ -1,27 +1,29 @@
 import { vi } from 'vitest'
-import { screen, setup } from '../../test/test-utils'
+import { render, screen } from '../../test/test-utils'
 import { ChatInput } from './ChatInput'
 import { noOp } from '../../utils'
 import { createTheme, ThemeProvider } from '@mui/material'
+import userEvent from '@testing-library/user-event'
+import { act } from '@testing-library/react'
 
 it('renders without crashing', async () => {
   const onAddMessageMock = vi.fn()
 
-  const { user } = setup(
+  render(
     <ThemeProvider theme={createTheme()}>
       <ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={noOp} onAlert={noOp} />
     </ThemeProvider>
   )
 
-  const input = screen.getByRole('textbox')
+  const input = await screen.findByRole('textbox')
 
   expect(input).toBeInTheDocument()
 
-  await user.type(input, 'My custom Message')
+  await act(() => userEvent.type(input, 'My custom Message'))
 
   expect(input).toHaveValue('My custom Message')
 
-  await user.type(input, '{Enter}')
+  await act(() => userEvent.type(input, '{Enter}'))
 
   expect(input).toHaveValue('')
 
