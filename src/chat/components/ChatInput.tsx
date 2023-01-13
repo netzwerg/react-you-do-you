@@ -1,49 +1,46 @@
-import { Hidden, TextField, Theme, Typography } from '@mui/material'
+import { Hidden, TextField, SxProps, Box, Typography, Theme } from '@mui/material'
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
-import { makeStyles } from '../../utils'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 import ErrorIcon from '@mui/icons-material/Error'
 import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
 
-const useStyles = makeStyles()((theme: Theme) => ({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: '50% auto',
-    gridColumnGap: theme.spacing(1),
-    alignItems: 'center',
+const sxRoot: SxProps = {
+  display: 'grid',
+  gridTemplateColumns: '50% auto',
+  alignItems: 'center',
+}
+
+const sxButtons: SxProps = {
+  display: 'grid',
+  gridTemplateColumns: 'auto auto',
+  gap: { xs: 0.5, md: 1 },
+  justifyContent: 'right',
+  alignItems: 'center',
+}
+
+const sxButton: SxProps<Theme> = (theme) => ({
+  alignItems: 'center',
+  justifyContent: 'center',
+  [theme.breakpoints.down('sm')]: {
+    pl: 0,
+    pr: 0,
   },
-  buttons: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridColumnGap: theme.spacing(1),
-    [theme.breakpoints.down('sm')]: {
-      gridColumnGap: theme.spacing(0.5),
-    },
-    justifyContent: 'right',
-    alignItems: 'center',
+})
+
+const sxButtonLabel: SxProps<Theme> = (theme) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: theme.typography.caption.fontSize,
   },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    [theme.breakpoints.down('sm')]: {
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
+})
+
+const sxIcon: SxProps<Theme> = (theme) => ({
+  marginLeft: 1,
+  [theme.breakpoints.down('sm')]: {
+    marginLeft: 0,
+    marginRight: 0,
   },
-  buttonLabel: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: theme.typography.caption.fontSize,
-    },
-  },
-  icon: {
-    marginLeft: theme.spacing(1),
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 0,
-      marginRight: 0,
-    },
-  },
-}))
+})
 
 export interface Props {
   readonly onAddMessage: (text: string) => void
@@ -52,7 +49,6 @@ export interface Props {
 }
 
 export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onAlert }: Props) => {
-  const { classes } = useStyles()
   const [message, setMessage] = useState<string>('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)
@@ -64,12 +60,12 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onAlert }: Props)
   }
 
   return (
-    <div className={classes.root}>
+    <Box sx={sxRoot}>
       <TextField value={message} label="Compose Message" size={'small'} onChange={onChange} onKeyDown={onKeyDown} />
-      <div className={classes.buttons}>
+      <Box sx={sxButtons}>
         <Tooltip title={'Fetch Async Message'}>
           <Button
-            className={classes.button}
+            sx={sxButton}
             color="primary"
             variant="outlined"
             fullWidth
@@ -77,27 +73,20 @@ export const ChatInput = ({ onAddMessage, onFetchAsyncMessage, onAlert }: Props)
             onClick={onFetchAsyncMessage}
           >
             <Hidden smDown>
-              <Typography className={classes.buttonLabel}>Async</Typography>
+              <Typography sx={sxButtonLabel}>Async</Typography>
             </Hidden>
-            <CloudDownloadIcon className={classes.icon} />
+            <CloudDownloadIcon sx={sxIcon} />
           </Button>
         </Tooltip>
         <Tooltip title={'Demo Alert Handling'}>
-          <Button
-            className={classes.button}
-            color="secondary"
-            variant="outlined"
-            fullWidth
-            size={'large'}
-            onClick={onAlert}
-          >
+          <Button sx={sxButton} color="secondary" variant="outlined" fullWidth size={'large'} onClick={onAlert}>
             <Hidden smDown>
-              <Typography className={classes.buttonLabel}>Alert</Typography>
+              <Typography sx={sxButtonLabel}>Alert</Typography>
             </Hidden>
-            <ErrorIcon className={classes.icon} />
+            <ErrorIcon sx={sxIcon} />
           </Button>
         </Tooltip>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
