@@ -2,60 +2,56 @@ import React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import { ThemeSwitch } from '../../theme/containers/ThemeSwitch'
-import { Typography } from '@mui/material'
-import { makeStyles } from '../../utils'
+import { Typography, SxProps, Theme, Box } from '@mui/material'
 import { ChatInput } from '../../chat/containers/ChatInput'
 import { ChatHistory } from '../../chat/containers/ChatHistory'
 import { Alerts } from '../../alert/containers/Alerts'
 
-const useStyles = makeStyles()((theme) => ({
-  toolbar: {
-    display: 'grid',
-    gridTemplateColumns: '1fr auto auto',
-    justifyContent: 'space-between',
-    [theme.breakpoints.down('md')]: {
-      paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
-    },
+const sxToolbar: SxProps<Theme> = (theme) => ({
+  display: 'grid',
+  gridTemplateColumns: '1fr auto auto',
+  justifyContent: 'space-between',
+  [theme.breakpoints.down('md')]: {
+    pl: 1,
+    pr: 1,
   },
-  title: {
-    [theme.breakpoints.down('md')]: {
-      fontSize: theme.typography.caption.fontSize,
-    },
+})
+
+const sxTitle: SxProps<Theme> = (theme) => ({
+  [theme.breakpoints.down('md')]: {
+    fontSize: theme.typography.caption.fontSize,
   },
-  main: {
-    display: 'grid',
-    height: '100vh',
-    width: '100vw',
-    gridTemplateRows: 'auto 1fr',
-    gridRowGap: 8,
-    paddingTop: 100,
-    paddingLeft: '20vw',
-    paddingRight: '20vw',
-    [theme.breakpoints.down('md')]: {
-      paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
-    },
+})
+
+const sxMain: SxProps<Theme> = (theme) => ({
+  display: 'grid',
+  height: '100vh',
+  width: '100vw',
+  gridTemplateRows: 'auto 1fr',
+  gap: 8,
+  pt: '100px',
+  pl: '20vw',
+  pr: '20vw',
+  [theme.breakpoints.down('md')]: {
+    pl: 1,
+    pr: 1,
   },
-}))
+})
 
 export const App = () => {
-  const { classes } = useStyles()
   return (
     <>
       <AppBar>
-        <Toolbar className={classes.toolbar}>
-          <Typography className={classes.title} noWrap>{`React You Do You – v${
-            import.meta.env.VITE_APP_VERSION
-          }`}</Typography>
+        <Toolbar sx={sxToolbar}>
+          <Typography sx={sxTitle} noWrap>{`React You Do You – v${import.meta.env.VITE_APP_VERSION}`}</Typography>
           <Alerts />
           <ThemeSwitch />
         </Toolbar>
       </AppBar>
-      <div className={classes.main}>
+      <Box sx={sxMain}>
         <ChatInput />
         <ChatHistory />
-      </div>
+      </Box>
     </>
   )
 }

@@ -1,7 +1,6 @@
 import { vi } from 'vitest'
 import { render, screen } from '../../test/test-utils'
 import { ChatInput } from './ChatInput'
-import { noOp } from '../../utils'
 import { createTheme, ThemeProvider } from '@mui/material'
 import userEvent from '@testing-library/user-event'
 import { act } from '@testing-library/react'
@@ -11,7 +10,7 @@ it('renders without crashing', async () => {
 
   render(
     <ThemeProvider theme={createTheme()}>
-      <ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={noOp} onAlert={noOp} />
+      <ChatInput onAddMessage={onAddMessageMock} onFetchAsyncMessage={() => {}} onAlert={() => {}} />
     </ThemeProvider>
   )
 

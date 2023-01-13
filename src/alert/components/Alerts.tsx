@@ -9,41 +9,45 @@ import {
   ListItemAvatar,
   ListItemText,
   Popover,
+  SxProps,
 } from '@mui/material'
 import { Alert } from '../alertSlice'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import { useState } from 'react'
-import { makeStyles } from '../../utils'
 
 const UNREAD_MARKER_SIZE = 10
 
-const useStyles = makeStyles()((theme) => ({
-  button: {
-    color: 'white',
-  },
-  listContainer: {
-    width: '30vw',
-    maxHeight: '30vh',
-  },
-  listGutter: {
-    minWidth: UNREAD_MARKER_SIZE,
-    marginRight: theme.spacing(2),
-  },
-  unreadMarker: {
-    width: UNREAD_MARKER_SIZE,
-    height: UNREAD_MARKER_SIZE,
-  },
-  unreadMarkerError: {
-    backgroundColor: theme.palette.error.main,
-  },
-  unreadMarkerWarning: {
-    backgroundColor: theme.palette.warning.main,
-  },
-  listItemText: {
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-}))
+const sxButton: SxProps = {
+  color: 'white',
+}
+
+const sxListContainer: SxProps = {
+  width: '30vw',
+  maxHeight: '30vh',
+}
+
+const sxListGutter: SxProps = {
+  minWidth: UNREAD_MARKER_SIZE,
+  mr: 2,
+}
+
+const sxUnreadMarker: SxProps = {
+  width: UNREAD_MARKER_SIZE,
+  height: UNREAD_MARKER_SIZE,
+}
+
+const sxUnreadMarkerError: SxProps = {
+  bgcolor: 'error.main',
+}
+
+const sxUnreadMarkerWarning: SxProps = {
+  bgcolor: 'warning.main',
+}
+
+const sxListItemText: SxProps = {
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+}
 
 export interface Props {
   readonly alerts: ReadonlyArray<Alert>
@@ -52,8 +56,6 @@ export interface Props {
 }
 
 export const Alerts = ({ alerts, unreadCount, onMarkAlertsRead }: Props) => {
-  const { classes, cx } = useStyles()
-
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -73,7 +75,7 @@ export const Alerts = ({ alerts, unreadCount, onMarkAlertsRead }: Props) => {
 
   return (
     <>
-      <IconButton className={classes.button} onClick={handleClick}>
+      <IconButton sx={sxButton} onClick={handleClick}>
         <Badge color={badgeColor} badgeContent={unreadCount}>
           <NotificationsNoneRoundedIcon />
         </Badge>
@@ -88,7 +90,7 @@ export const Alerts = ({ alerts, unreadCount, onMarkAlertsRead }: Props) => {
         }}
         onClose={handleClose}
       >
-        <Box className={classes.listContainer}>
+        <Box component={'div'} sx={sxListContainer}>
           <List>
             {alerts.length === 0 && (
               <ListItem>
@@ -98,13 +100,10 @@ export const Alerts = ({ alerts, unreadCount, onMarkAlertsRead }: Props) => {
             {[...alerts].reverse().map((alert, index) => (
               <div key={index}>
                 <ListItem>
-                  <ListItemAvatar className={classes.listGutter}>
+                  <ListItemAvatar sx={sxListGutter}>
                     {index < unreadCount && (
                       <Avatar
-                        className={cx(
-                          classes.unreadMarker,
-                          alert.type === 'error' ? classes.unreadMarkerError : classes.unreadMarkerWarning
-                        )}
+                        sx={[sxUnreadMarker, alert.type === 'error' ? sxUnreadMarkerError : sxUnreadMarkerWarning]}
                       >
                         {''}
                       </Avatar>
@@ -112,7 +111,11 @@ export const Alerts = ({ alerts, unreadCount, onMarkAlertsRead }: Props) => {
                   </ListItemAvatar>
                   <ListItemText
                     primary={alert.topic}
-                    secondary={<span className={classes.listItemText}>{alert.message}</span>}
+                    secondary={
+                      <Box component={'span'} sx={sxListItemText}>
+                        {alert.message}
+                      </Box>
+                    }
                   />
                 </ListItem>
                 {index < alerts.length - 1 && <Divider component="li" />}

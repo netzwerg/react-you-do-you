@@ -1,20 +1,18 @@
 import DarkThemeIcon from '@mui/icons-material/Brightness2'
 import LightThemeIcon from '@mui/icons-material/WbSunny'
-import { Switch } from '@mui/material'
-import { makeStyles } from '../../utils'
+import { Switch, SxProps, Theme, Box } from '@mui/material'
 import { AppTheme } from '../themeSlice'
 
-const useStyles = makeStyles()({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-    justifyContent: 'start',
-    alignItems: 'center',
-  },
-  icon: {
-    margin: 4,
-  },
-})
+const sxRoot: SxProps<Theme> = {
+  display: 'grid',
+  gridTemplateColumns: 'auto auto auto',
+  justifyContent: 'start',
+  alignItems: 'center',
+}
+
+const sxIcon: SxProps<Theme> = {
+  margin: 1,
+}
 
 export interface Props {
   readonly theme: AppTheme
@@ -22,12 +20,11 @@ export interface Props {
 }
 
 export const ThemeSwitch = ({ theme, onToggleTheme }: Props) => {
-  const { classes } = useStyles()
   return (
-    <div className={classes.root}>
-      <LightThemeIcon className={classes.icon} />
+    <Box component={'div'} sx={sxRoot}>
+      <LightThemeIcon sx={sxIcon} />
       <Switch checked={theme === 'dark'} onChange={onToggleTheme} color={'default'} />
-      <DarkThemeIcon className={classes.icon} />
-    </div>
+      <DarkThemeIcon sx={sxIcon} />
+    </Box>
   )
 }
