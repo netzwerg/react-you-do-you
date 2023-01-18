@@ -13,8 +13,6 @@
     "test": "vitest",
     "test:ci": "CI=true vitest run",
     "coverage": "vitest run --coverage",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "postinstall": "husky install"
   },
   "lint-staged": {
@@ -61,6 +59,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@ladle/react": "^2.4.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
     "@mui/system": "^5.11.4",
@@ -71,18 +70,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
-    "@storybook/addon-actions": "^6.5.15",
-    "@storybook/addon-backgrounds": "^6.5.15",
-    "@storybook/addon-docs": "^6.5.15",
-    "@storybook/addon-essentials": "^6.5.15",
-    "@storybook/addon-links": "^6.5.15",
-    "@storybook/addon-measure": "^6.5.15",
-    "@storybook/addon-outline": "^6.5.15",
-    "@storybook/builder-vite": "^0.2.7",
-    "@storybook/client-api": "^6.5.15",
-    "@storybook/client-logger": "^6.5.15",
-    "@storybook/node-logger": "^6.5.15",
-    "@storybook/react": "^6.5.15",
     "@testing-library/dom": "^8.19.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -104,7 +91,6 @@
     "node-fetch": "^3.3.0",
     "prettier": "2.8.2",
     "prettier-plugin-packagejson": "2.3.0",
-    "storybook-dark-mode": "^2.0.5",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-plugin-checker": "^0.5.3",
