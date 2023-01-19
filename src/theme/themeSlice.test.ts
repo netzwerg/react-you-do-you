@@ -1,6 +1,6 @@
 import { setTheme, toggleTheme } from './themeSlice'
 import { createStore } from '../store'
-import { selectTheme } from './selector'
+import { selectTheme } from './selectors'
 
 describe('themeSlice', () => {
   it(`should handle ${toggleTheme.type} action`, () => {

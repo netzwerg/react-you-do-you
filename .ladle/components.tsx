@@ -29,6 +29,17 @@ const ThemeAwareDecorator = ({ ladleTheme, children }: Props) => {
     dispatch(setTheme(ladleTheme === 'dark' ? 'dark' : 'light'))
   }, [ladleTheme])
 
+  // FIXME: Missing re-render
+  // - yarn ladle serve (starts with Ladle 'light' theme)
+  // - select 'Switch' component in tree on the right
+  // - toggle Ladle theme to 'dark' (button lower left corner)
+  // Expected:
+  // - Our theme syncs to Ladle theme
+  // - this component right here re-renders (due to useCustomTheme hook)
+  // Actual:
+  // - Our theme is properly updated in the Redux store
+  // - no re-rendering (MUI uses dark font on dark background)
+
   console.log({ ourTheme: theme.palette.mode, ladleTheme })
 
   return (
