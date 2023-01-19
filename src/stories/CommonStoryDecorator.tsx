@@ -2,13 +2,13 @@ import { useLadleContext } from '@ladle/react'
 import { ThemeProvider } from '@mui/material/styles'
 import { useCustomTheme } from '../theme/hooks'
 import React, { FC, ReactNode, useEffect } from 'react'
-import { store, useAppDispatch } from '../store'
+import { createStore, useAppDispatch } from '../store'
 import { setTheme } from '../theme/themeSlice'
 import { Provider as ReduxProvider } from 'react-redux'
 import { CssBaseline } from '@mui/material'
 
 export const CommonStoryDecorator = (Component: FC) => (
-  <ReduxProvider store={store}>
+  <ReduxProvider store={createStore()}>
     <ThemeAwareDecorator>
       <Component />
     </ThemeAwareDecorator>
