@@ -1,7 +1,8 @@
 import { ThemeSwitch } from '../theme/components/ThemeSwitch'
-import { Typography } from '@mui/material'
 import { useTheme } from '@mui/system'
 import { CommonStoryDecorator } from './CommonStoryDecorator'
+import { ActionType, ThemeState, useLadleContext } from '@ladle/react'
+import { useCallback } from 'react'
 
 export default {
   decorators: [CommonStoryDecorator],
@@ -9,10 +10,15 @@ export default {
 
 export const Switch = () => {
   const theme = useTheme()
-  return (
-    <>
-      <ThemeSwitch theme={theme.palette.mode} onToggleTheme={() => {}} />
-      <Typography variant={'body2'}>{'Toggle Ladle theme (bottom left corner) to switch state'}</Typography>
-    </>
-  )
+
+  const { dispatch } = useLadleContext()
+
+  const onToggleTheme = useCallback(() => {
+    dispatch({
+      type: ActionType.UpdateTheme,
+      value: theme.palette.mode === 'dark' ? ThemeState.Light : ThemeState.Dark,
+    })
+  }, [theme, dispatch])
+
+  return <ThemeSwitch theme={theme.palette.mode} onToggleTheme={onToggleTheme} />
 }
