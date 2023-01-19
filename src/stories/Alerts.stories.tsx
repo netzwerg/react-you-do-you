@@ -1,6 +1,7 @@
 import { Alerts, Props } from '../alert/components/Alerts'
 import { Alert } from '../alert/alertSlice'
 import type { StoryDecorator } from '@ladle/react'
+import { CommonStoryDecorator } from './CommonStoryDecorator'
 
 const ERROR_ALERT: Alert = {
   type: 'error',
@@ -16,6 +17,7 @@ const WARNING_ALERT: Alert = {
 
 export default {
   decorators: [
+    CommonStoryDecorator,
     (Component) => {
       return (
         <div style={{ display: 'grid', placeItems: 'center', width: 100, height: 100, backgroundColor: 'grey' }}>

@@ -10,6 +10,7 @@ const themeSlice = createSlice({
       return state === 'light' ? 'dark' : 'light'
     },
     setTheme: (_, action: PayloadAction<AppTheme>) => {
+      console.log('reducer ' + action.payload)
       return action.payload
     },
   },

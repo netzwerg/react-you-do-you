@@ -1,9 +1,14 @@
 import { ThemeSwitch } from '../theme/components/ThemeSwitch'
 import { Typography } from '@mui/material'
-import { useCustomTheme } from '../theme/hooks'
+import { useTheme } from '@mui/system'
+import { CommonStoryDecorator } from './CommonStoryDecorator'
+
+export default {
+  decorators: [CommonStoryDecorator],
+}
 
 export const Switch = () => {
-  const theme = useCustomTheme()
+  const theme = useTheme()
   return (
     <>
       <ThemeSwitch theme={theme.palette.mode} onToggleTheme={() => {}} />
