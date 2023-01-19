@@ -1,8 +1,7 @@
-import { Meta, Story } from '@storybook/react'
 import { Alerts, Props } from '../alert/components/Alerts'
-import React from 'react'
 import { Alert } from '../alert/alertSlice'
-import { AppBar } from '@mui/material'
+import type { StoryDecorator } from '@ladle/react'
+import { CommonStoryDecorator } from './CommonStoryDecorator'
 
 const ERROR_ALERT: Alert = {
   type: 'error',
@@ -17,30 +16,30 @@ const WARNING_ALERT: Alert = {
 }
 
 export default {
-  title: 'Alerts',
-  component: Alerts,
-} as Meta
+  decorators: [
+    CommonStoryDecorator,
+    (Component) => {
+      return (
+        <div style={{ display: 'grid', placeItems: 'center', width: 100, height: 100, backgroundColor: 'grey' }}>
+          <Component />
+        </div>
+      )
+    },
+  ] as StoryDecorator[],
+}
 
-const Template: Story<Props> = (args) => (
-  <AppBar style={{ minHeight: 64, display: 'grid', alignItems: 'center', justifyItems: 'end', paddingRight: 8 }}>
-    <Alerts {...args} />
-  </AppBar>
+const defaultProps: Omit<Props, 'alerts' | 'unreadCount'> = {
+  onMarkAlertsRead: () => {},
+}
+
+export const AllRead = () => (
+  <Alerts alerts={[ERROR_ALERT, WARNING_ALERT, WARNING_ALERT]} unreadCount={0} {...defaultProps} />
 )
 
-export const AllRead = Template.bind({})
-AllRead.args = {
-  alerts: [ERROR_ALERT, WARNING_ALERT, WARNING_ALERT],
-  unreadCount: 0,
-}
+export const UnreadWarningsAndErrors = () => (
+  <Alerts alerts={[ERROR_ALERT, WARNING_ALERT, WARNING_ALERT]} unreadCount={3} {...defaultProps} />
+)
 
-export const UnreadWarningsAndErrors = Template.bind({})
-UnreadWarningsAndErrors.args = {
-  alerts: [ERROR_ALERT, WARNING_ALERT, WARNING_ALERT],
-  unreadCount: 3,
-}
-
-export const UnreadWarningsOnly = Template.bind({})
-UnreadWarningsOnly.args = {
-  alerts: [WARNING_ALERT, WARNING_ALERT, WARNING_ALERT],
-  unreadCount: 3,
-}
+export const UnreadWarningsOnly = () => (
+  <Alerts alerts={[WARNING_ALERT, WARNING_ALERT, WARNING_ALERT]} unreadCount={3} {...defaultProps} />
+)

@@ -23,7 +23,8 @@ Deployed live version: ✨ https://netzwerg.github.io/react-you-do-you ✨
 ** https://prettier.io[Prettier] for formatting, auto-triggered on commit via https://github.com/typicode/husky[Husky]
 ** https://redux-toolkit.js.org[Redux Toolkit] for state management
 ** https://material-ui.com/[Material UI 5] component library (using MUI System for CSS)
-** https://storybook.js.org/[Storybook] to build & test UI components in isolation
+** https://ladle.dev[Ladle] to build & test UI components in isolation
+** https://playwright.dev[Playwright] to detect regressions through visual snapshots
 ** GitHub Actions & Pages Continuous Delivery
 
 == Structure
@@ -64,15 +65,21 @@ However, this is the minimum I *always* test:
 * Slices: Making sure each action is handled correctly (~80% of my logic)
 * Error-free rendering of each component ("Rendering Smoke Tests")
 
-== Storybook
+== Ladle
 
-The project contains a full https://storybook.js.org[Storybook] configuration.
+The project contains a full https://ladle.dev[Ladle] configuration.
 Writing stories for your UI components allows building & testing them in isolation.
 Example stories are contained in link:src/stories[src/stories].
 
 To run locally:
 
-`yarn run storybook`
+`yarn ladle serve`
+
+== Playwright
+
+An example setup to detect regressions through https://ladle.dev/docs/visual-snapshots[visual snapshots] is configured in link:src/e2e[src/e2e]
+
+NOTE: These tests are not running automatically – adding them to your CI is up to you
 
 == Continuous Integration & Delivery
 
@@ -133,8 +140,8 @@ Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in 
 
 Runs ESLint (with TypeScript support) on all `&#42;.ts` or `&#42;.tsx` files in the `src` directory, automatically *fixing* problems.
 
-=== `yarn run storybook`
+=== `yarn ladle serve`
 
-Runs Storybook
+Runs Ladle
 
 &copy; Rahel Lüthy 2019 - 2023 link:LICENSE[MIT License]
