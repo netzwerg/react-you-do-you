@@ -105,6 +105,19 @@ yarn install
 yarn start
 ----
 
+=== Editor Setup
+
+Since we are using Yarn 3 with Plug'n'Play, Smart IDEs (such as VSCode or IntelliJ) require special configuration for TypeScript to work. See: https://yarnpkg.com/getting-started/editor-sdks[Editor SDKs].
+
+To setup VS Code, run the following command:
+
+[source]
+----
+yarn dlx @yarnpkg/sdks vscode
+----
+
+Once the Editor SDK is installed, VS Code will ask you to choose a TypeScript version. Choose "Use Workspace Version".
+
 === As Project Template
 
 * Rename root folder to `my-fancy-new-project-name`
