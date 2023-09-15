@@ -81,6 +81,16 @@ An example setup to detect regressions through https://ladle.dev/docs/visual-sna
 
 NOTE: These tests are not running automatically – adding them to your CI is up to you
 
+To run the playwright tests locally, first install the required browser binaries:
+
+`yarn playwright install`
+
+Then, to run the tests:
+
+1. Build ladle: `yarn ladle build`
+2. Start ladle: `yarn ladle preview -p 61000`
+3. Run playwright: `yarn playwright test ./src/e2e/snapshot.spec.ts`
+
 == Continuous Integration & Delivery
 
 On every push or pull request, a set of link:.github/workflows/main.yml[GitHub Actions] are kicked off:

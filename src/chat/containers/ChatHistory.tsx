@@ -1,10 +1,11 @@
 import { ChatHistory as ChatHistoryComponent } from '../components/ChatHistory'
 import * as React from 'react'
-import { useAppDispatch, useAppSelector } from '../../store'
+import { useAppDispatch } from '../../store'
 import { deleteChatMessage } from '../chatSlice'
+import { useChatMessages } from '../hooks'
 
 export const ChatHistory = () => {
-  const messages = useAppSelector((s) => [...s.chat.messages].sort((m1, m2) => m2.timestamp - m1.timestamp))
+  const messages = useChatMessages()
 
   const dispatch = useAppDispatch()
   const onDeleteMessage = (timestamp: number) => dispatch(deleteChatMessage(timestamp))
