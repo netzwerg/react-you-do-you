@@ -26,7 +26,7 @@ jobs:
 
       - name: Quality Assurance 👌
         run: |
-          npx dpdm --warning false --tree false --exit-code circular:1 src/**
+          npx dpdm -T --warning false --tree false --exit-code circular:1 src/**
 
       - name: Build 🔧
         run:
